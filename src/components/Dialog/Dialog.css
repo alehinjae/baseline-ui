@@ -1,0 +1,51 @@
+.bl-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* Base UI expõe [data-starting-style]/[data-ending-style] para animar
+     entrada/saída sem JS de estado — a transição vive inteiramente em CSS. */
+  transition: opacity 0.15s ease;
+}
+.bl-dialog-backdrop[data-starting-style],
+.bl-dialog-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.bl-dialog-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100vw - 32px));
+  background: var(--bl-color-bg);
+  color: var(--bl-color-text);
+  border-radius: var(--bl-radius-lg);
+  border: 1px solid var(--bl-color-border);
+  box-shadow: var(--bl-shadow-popup);
+  padding: var(--bl-space-5);
+  font-family: var(--bl-font-sans);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.bl-dialog-popup[data-starting-style],
+.bl-dialog-popup[data-ending-style] {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+.bl-dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 var(--bl-space-2);
+}
+
+.bl-dialog-description {
+  font-size: 14px;
+  color: var(--bl-color-text-muted);
+  margin: 0 0 var(--bl-space-4);
+}
+
+.bl-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--bl-space-2);
+}

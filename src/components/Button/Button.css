@@ -1,0 +1,64 @@
+.bl-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-space-2);
+  font-family: var(--bl-font-sans);
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-md);
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+
+.bl-button[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* tamanho */
+.bl-button[data-bl-size='sm'] { padding: var(--bl-space-1) var(--bl-space-3); font-size: 13px; }
+.bl-button[data-bl-size='md'] { padding: var(--bl-space-2) var(--bl-space-4); font-size: 14px; }
+.bl-button[data-bl-size='lg'] { padding: var(--bl-space-3) var(--bl-space-5); font-size: 16px; }
+
+/* variante */
+.bl-button[data-bl-variant='solid'] {
+  background: var(--bl-color-accent);
+  color: var(--bl-color-accent-text);
+}
+.bl-button[data-bl-variant='solid']:not([data-disabled]):hover {
+  opacity: 0.85;
+}
+
+.bl-button[data-bl-variant='outline'] {
+  background: transparent;
+  border-color: var(--bl-color-border);
+  color: var(--bl-color-text);
+}
+.bl-button[data-bl-variant='outline']:not([data-disabled]):hover {
+  background: var(--bl-color-bg-subtle);
+}
+
+.bl-button[data-bl-variant='ghost'] {
+  background: transparent;
+  color: var(--bl-color-text);
+}
+.bl-button[data-bl-variant='ghost']:not([data-disabled]):hover {
+  background: var(--bl-color-bg-subtle);
+}
+
+.bl-button[data-bl-variant='danger'] {
+  background: var(--bl-color-danger);
+  color: #ffffff;
+}
+.bl-button[data-bl-variant='danger']:not([data-disabled]):hover {
+  opacity: 0.85;
+}
+
+/* foco visível mesmo quando o botão está desabilitado (focusableWhenDisabled do
+   Base UI) — é o que torna o motivo do bloqueio descobrível via teclado/leitor
+   de tela, em vez de a ação simplesmente "sumir" para quem não usa mouse. */
+.bl-button:focus-visible {
+  outline: 2px solid var(--bl-color-accent);
+  outline-offset: 2px;
+}

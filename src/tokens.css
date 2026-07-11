@@ -1,0 +1,39 @@
+/* Tokens do baseline-ui — a única fonte "opinativa" da biblioteca.
+   Base UI não define nada disso (é 100% sem estilo); é aqui que o
+   baseline-ui vira um design system de verdade, e não só um wrapper. */
+:root {
+  --bl-color-bg: #ffffff;
+  --bl-color-bg-subtle: #f4f4f5;
+  --bl-color-text: #18181b;
+  --bl-color-text-muted: #71717a;
+  --bl-color-border: #e4e4e7;
+  --bl-color-accent: #18181b;
+  --bl-color-accent-text: #ffffff;
+  --bl-color-danger: #dc2626;
+
+  --bl-radius-sm: 6px;
+  --bl-radius-md: 10px;
+  --bl-radius-lg: 16px;
+
+  --bl-space-1: 4px;
+  --bl-space-2: 8px;
+  --bl-space-3: 12px;
+  --bl-space-4: 16px;
+  --bl-space-5: 24px;
+
+  --bl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --bl-shadow-popup: 0 10px 38px -10px rgba(0, 0, 0, 0.25), 0 10px 20px -15px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bl-color-bg: #18181b;
+    --bl-color-bg-subtle: #27272a;
+    --bl-color-text: #f4f4f5;
+    --bl-color-text-muted: #a1a1aa;
+    --bl-color-border: #3f3f46;
+    --bl-color-accent: #f4f4f5;
+    --bl-color-accent-text: #18181b;
+    --bl-color-danger: #f87171;
+  }
+}
