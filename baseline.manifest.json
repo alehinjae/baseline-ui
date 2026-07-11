@@ -36,7 +36,7 @@
       },
       "states": ["hover", "focus-visible", "disabled"],
       "tokens": [
-        "color.accent", "color.accent-text", "color.text", "color.border",
+        "color.accent", "color.accent-text", "color.text", "color.border-strong",
         "color.bg-subtle", "color.danger", "color.danger-text",
         "space.1", "space.2", "space.3", "space.4", "space.5",
         "radius.md", "font.sans", "font-size.sm", "font-size.md",
@@ -78,7 +78,7 @@
       "states": ["focus-visible", "invalid", "disabled"],
       "tokens": [
         "color.bg", "color.bg-subtle", "color.text", "color.text-muted",
-        "color.border", "color.accent", "color.danger",
+        "color.border-strong", "color.accent", "color.danger",
         "space.2", "space.3", "radius.md",
         "font.sans", "font-size.sm", "font-size.md", "font-weight.medium"
       ]
@@ -92,7 +92,7 @@
       },
       "states": ["checked", "unchecked", "focus-visible", "disabled"],
       "tokens": [
-        "color.border", "color.accent", "color.bg",
+        "color.border-strong", "color.accent", "color.bg",
         "space.4", "radius.full"
       ]
     }

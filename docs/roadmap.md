@@ -15,6 +15,9 @@ decisões agora são tomadas como fundação de longo prazo.
       **Switch**
 - [x] Tipografia tokenizada (font-size/font-weight); nenhum valor bruto
       em CSS de componente
+- [x] Tema white (branco + zinc) com contraste WCAG AA verificado em todo
+      build (`check-contrast`); token `border-strong` para bordas de
+      controle — ADR 0006
 - [ ] Verificação interativa no navegador (Dialog no nbd-scheduler +
       Field/Switch em página de demonstração) — pendente da fase 0
 

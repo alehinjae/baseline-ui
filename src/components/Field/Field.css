@@ -16,7 +16,8 @@
   font-size: var(--bl-font-size-md);
   color: var(--bl-color-text);
   background: var(--bl-color-bg);
-  border: 1px solid var(--bl-color-border);
+  /* border-strong (≥3:1): a borda delimita o campo de entrada — WCAG 1.4.11 */
+  border: 1px solid var(--bl-color-border-strong);
   border-radius: var(--bl-radius-md);
   padding: var(--bl-space-2) var(--bl-space-3);
   transition: border-color 0.12s ease;

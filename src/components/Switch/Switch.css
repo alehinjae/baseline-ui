@@ -10,7 +10,8 @@
   padding: var(--_gap);
   border: none;
   border-radius: var(--bl-radius-full);
-  background: var(--bl-color-border);
+  /* border-strong (≥3:1): o trilho é o próprio componente — WCAG 1.4.11 */
+  background: var(--bl-color-border-strong);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }

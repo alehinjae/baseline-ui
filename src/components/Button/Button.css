@@ -32,7 +32,9 @@
 
 .bl-button[data-bl-variant='outline'] {
   background: transparent;
-  border-color: var(--bl-color-border);
+  /* border-strong (≥3:1 sobre o fundo): a borda é o que identifica o botão
+     como interativo — WCAG 1.4.11; border comum é só para divisórias */
+  border-color: var(--bl-color-border-strong);
   color: var(--bl-color-text);
 }
 .bl-button[data-bl-variant='outline']:not([data-disabled]):hover {

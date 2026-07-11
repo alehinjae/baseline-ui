@@ -1,5 +1,5 @@
 {
-  "$description": "Camada 2 — semânticos, modo escuro. Mesmas chaves do semantic.light.json, apontando para outros primitivos. No Figma, vira o modo 'Dark' da coleção 'Semantic'. No CSS gerado, vira o bloco @media (prefers-color-scheme: dark).",
+  "$description": "Camada 2 — semânticos, modo escuro. Mesmas chaves do semantic.light.json, apontando para outros primitivos; contraste verificado por scripts/check-contrast.mjs no build (ADR 0006). No Figma, vira o modo 'Dark' da coleção 'Semantic'. No CSS gerado, vira o bloco @media (prefers-color-scheme: dark).",
   "color": {
     "$type": "color",
     "bg": { "$value": "{color.zinc.900}" },
@@ -7,9 +7,10 @@
     "text": { "$value": "{color.zinc.100}" },
     "text-muted": { "$value": "{color.zinc.400}" },
     "border": { "$value": "{color.zinc.700}" },
+    "border-strong": { "$value": "{color.zinc.500}" },
     "accent": { "$value": "{color.zinc.100}" },
     "accent-text": { "$value": "{color.zinc.900}" },
     "danger": { "$value": "{color.red.400}" },
-    "danger-text": { "$value": "{color.white}" }
+    "danger-text": { "$value": "{color.zinc.950}" }
   }
 }

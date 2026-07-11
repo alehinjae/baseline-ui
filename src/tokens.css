@@ -43,10 +43,11 @@
   /* camada 2 — semânticos, modo claro (coleção 'Semantic', modo 'Light') */
   --bl-color-bg: var(--bl-color-white);
   --bl-color-bg-subtle: var(--bl-color-zinc-100);
-  --bl-color-text: var(--bl-color-zinc-900);
-  --bl-color-text-muted: var(--bl-color-zinc-500);
+  --bl-color-text: var(--bl-color-zinc-800);
+  --bl-color-text-muted: var(--bl-color-zinc-600);
   --bl-color-border: var(--bl-color-zinc-200);
-  --bl-color-accent: var(--bl-color-zinc-900);
+  --bl-color-border-strong: var(--bl-color-zinc-500);
+  --bl-color-accent: var(--bl-color-zinc-800);
   --bl-color-accent-text: var(--bl-color-white);
   --bl-color-danger: var(--bl-color-red-600);
   --bl-color-danger-text: var(--bl-color-white);
@@ -60,9 +61,10 @@
     --bl-color-text: var(--bl-color-zinc-100);
     --bl-color-text-muted: var(--bl-color-zinc-400);
     --bl-color-border: var(--bl-color-zinc-700);
+    --bl-color-border-strong: var(--bl-color-zinc-500);
     --bl-color-accent: var(--bl-color-zinc-100);
     --bl-color-accent-text: var(--bl-color-zinc-900);
     --bl-color-danger: var(--bl-color-red-400);
-    --bl-color-danger-text: var(--bl-color-white);
+    --bl-color-danger-text: var(--bl-color-zinc-950);
   }
 }

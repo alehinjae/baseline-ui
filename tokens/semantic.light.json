@@ -1,13 +1,14 @@
 {
-  "$description": "Camada 2 — semânticos, modo claro. Todo valor é um alias {caminho} para um primitivo; é isto que os componentes consomem. No Figma, vira a coleção de Variables 'Semantic', modo 'Light'. Este arquivo e o semantic.dark.json precisam ter exatamente as mesmas chaves — o build falha se divergirem.",
+  "$description": "Camada 2 — semânticos, modo claro (tema white: branco + cinzas zinc, contraste verificado por scripts/check-contrast.mjs no build — ADR 0006). Todo valor é um alias {caminho} para um primitivo; é isto que os componentes consomem. No Figma, vira a coleção de Variables 'Semantic', modo 'Light'. Este arquivo e o semantic.dark.json precisam ter exatamente as mesmas chaves — o build falha se divergirem.",
   "color": {
     "$type": "color",
     "bg": { "$value": "{color.white}" },
     "bg-subtle": { "$value": "{color.zinc.100}" },
-    "text": { "$value": "{color.zinc.900}" },
-    "text-muted": { "$value": "{color.zinc.500}" },
+    "text": { "$value": "{color.zinc.800}" },
+    "text-muted": { "$value": "{color.zinc.600}" },
     "border": { "$value": "{color.zinc.200}" },
-    "accent": { "$value": "{color.zinc.900}" },
+    "border-strong": { "$value": "{color.zinc.500}" },
+    "accent": { "$value": "{color.zinc.800}" },
     "accent-text": { "$value": "{color.white}" },
     "danger": { "$value": "{color.red.600}" },
     "danger-text": { "$value": "{color.white}" }
