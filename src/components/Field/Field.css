@@ -1,0 +1,53 @@
+.bl-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-space-2);
+  font-family: var(--bl-font-sans);
+}
+
+.bl-field-label {
+  font-size: var(--bl-font-size-md);
+  font-weight: var(--bl-font-weight-medium);
+  color: var(--bl-color-text);
+}
+
+.bl-field-control {
+  font-family: inherit;
+  font-size: var(--bl-font-size-md);
+  color: var(--bl-color-text);
+  background: var(--bl-color-bg);
+  border: 1px solid var(--bl-color-border);
+  border-radius: var(--bl-radius-md);
+  padding: var(--bl-space-2) var(--bl-space-3);
+  transition: border-color 0.12s ease;
+}
+.bl-field-control::placeholder {
+  color: var(--bl-color-text-muted);
+}
+/* mesmo anel de foco do Button — a consistência do foco visível entre
+   componentes é parte do contrato do design system, não de cada componente */
+.bl-field-control:focus-visible {
+  outline: 2px solid var(--bl-color-accent);
+  outline-offset: 2px;
+}
+/* estados de validação vêm prontos do Base UI como data-attributes (ADR 0003) */
+.bl-field-control[data-invalid] {
+  border-color: var(--bl-color-danger);
+}
+.bl-field-control[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: var(--bl-color-bg-subtle);
+}
+
+.bl-field-description {
+  font-size: var(--bl-font-size-sm);
+  color: var(--bl-color-text-muted);
+  margin: 0;
+}
+
+.bl-field-error {
+  font-size: var(--bl-font-size-sm);
+  color: var(--bl-color-danger);
+  margin: 0;
+}

@@ -1,0 +1,100 @@
+{
+  "$description": "Contrato legível por máquina do baseline-ui. Descreve cada componente — partes, variantes, estados e tokens consumidos — para que uma ferramenta (script, MCP do Figma, plugin) consiga reconstruir a biblioteca como componentes/Variables no Figma sem ler o código-fonte. Mantido à mão junto com cada componente; o build falha se ele divergir do que src/ exporta (scripts/check-manifest.mjs). Ver ADR 0005 e docs/figma/mapeamento-figma.md.",
+  "name": "baseline-ui",
+  "version": "0.1.0",
+  "conventions": {
+    "cssVarPrefix": "--bl-",
+    "cssClassPrefix": "bl-",
+    "variantAttributePrefix": "data-bl-",
+    "tokens": {
+      "format": "w3c-design-tokens-draft",
+      "files": {
+        "primitives": "tokens/primitives.json",
+        "semantic": {
+          "light": "tokens/semantic.light.json",
+          "dark": "tokens/semantic.dark.json"
+        }
+      }
+    }
+  },
+  "components": {
+    "Button": {
+      "kind": "single",
+      "base": "@base-ui/react/button",
+      "cssClass": "bl-button",
+      "props": {
+        "variant": {
+          "values": ["solid", "outline", "ghost", "danger"],
+          "default": "solid",
+          "dataAttribute": "data-bl-variant"
+        },
+        "size": {
+          "values": ["sm", "md", "lg"],
+          "default": "md",
+          "dataAttribute": "data-bl-size"
+        }
+      },
+      "states": ["hover", "focus-visible", "disabled"],
+      "tokens": [
+        "color.accent", "color.accent-text", "color.text", "color.border",
+        "color.bg-subtle", "color.danger", "color.danger-text",
+        "space.1", "space.2", "space.3", "space.4", "space.5",
+        "radius.md", "font.sans", "font-size.sm", "font-size.md",
+        "font-size.lg", "font-weight.medium"
+      ]
+    },
+    "Dialog": {
+      "kind": "compound",
+      "base": "@base-ui/react/dialog",
+      "parts": {
+        "Root": { "styled": false },
+        "Trigger": { "styled": false },
+        "Portal": { "styled": false },
+        "Close": { "styled": false },
+        "Backdrop": { "styled": true, "cssClass": "bl-dialog-backdrop" },
+        "Popup": { "styled": true, "cssClass": "bl-dialog-popup" },
+        "Title": { "styled": true, "cssClass": "bl-dialog-title" },
+        "Description": { "styled": true, "cssClass": "bl-dialog-description" },
+        "Actions": { "styled": true, "cssClass": "bl-dialog-actions", "note": "parte própria do baseline-ui, não existe no Base UI" }
+      },
+      "states": ["open", "starting-style", "ending-style"],
+      "tokens": [
+        "color.bg", "color.text", "color.text-muted", "color.border",
+        "radius.lg", "shadow.popup", "space.2", "space.4", "space.5",
+        "font.sans", "font-size.md", "font-size.lg", "font-weight.semibold"
+      ]
+    },
+    "Field": {
+      "kind": "compound",
+      "base": "@base-ui/react/field",
+      "parts": {
+        "Root": { "styled": true, "cssClass": "bl-field" },
+        "Label": { "styled": true, "cssClass": "bl-field-label" },
+        "Control": { "styled": true, "cssClass": "bl-field-control" },
+        "Description": { "styled": true, "cssClass": "bl-field-description" },
+        "Error": { "styled": true, "cssClass": "bl-field-error" },
+        "Validity": { "styled": false }
+      },
+      "states": ["focus-visible", "invalid", "disabled"],
+      "tokens": [
+        "color.bg", "color.bg-subtle", "color.text", "color.text-muted",
+        "color.border", "color.accent", "color.danger",
+        "space.2", "space.3", "radius.md",
+        "font.sans", "font-size.sm", "font-size.md", "font-weight.medium"
+      ]
+    },
+    "Switch": {
+      "kind": "compound",
+      "base": "@base-ui/react/switch",
+      "parts": {
+        "Root": { "styled": true, "cssClass": "bl-switch" },
+        "Thumb": { "styled": true, "cssClass": "bl-switch-thumb" }
+      },
+      "states": ["checked", "unchecked", "focus-visible", "disabled"],
+      "tokens": [
+        "color.border", "color.accent", "color.bg",
+        "space.4", "radius.full"
+      ]
+    }
+  }
+}

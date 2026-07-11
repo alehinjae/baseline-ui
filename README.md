@@ -1,57 +1,68 @@
 # baseline-ui
 
-Design system de **estudo**: dissecando como o [Base UI](https://base-ui.com)
-(motor de primitivas headless dos times por trás do Radix + Floating UI)
-resolve comportamento, foco e acessibilidade — construindo componentes reais
-em cima dele. Não é o design system principal do ecossistema ainda; é o
-laboratório antes dele.
+Design system principal do ecossistema, construído dissecando o
+[Base UI](https://base-ui.com) (motor de primitivas headless dos times por
+trás do Radix + Floating UI). Nasceu como projeto de estudo; desde
+2026-07-11 é a fundação de longo prazo — o caráter de estudo continua, mas
+cada decisão agora é tomada como permanente (ver [`docs/roadmap.md`](./docs/roadmap.md)).
 
-As decisões e o que foi aprendido no processo ficam documentados em
-[`docs/decisions/`](./docs/decisions), no mesmo espírito de ADR usado no
-[atlas](https://github.com/alehinjae/atlas).
+Toda decisão de arquitetura tem um ADR em
+[`docs/decisions/`](./docs/decisions) explicando contexto, alternativas e
+consequências — o projeto é pensado para ser *lido*, não só usado.
 
-## O que tem aqui
+## Arquitetura em uma tela
 
-- `Button` — variantes (`solid`, `outline`, `ghost`, `danger`) e tamanhos,
-  com toda a acessibilidade herdada do `@base-ui/react` Button (inclusive
-  `focusableWhenDisabled`, que resolve o clássico problema de leitor de
-  tela não conseguir descobrir por que um botão desabilitado existe).
-- `Dialog` — modal completo (foco preso, Esc fecha, clique fora fecha,
-  ARIA automático), com casca visual do baseline-ui por cima das partes
-  sem-estilo do Base UI.
+```
+tokens/*.json  ──(npm run tokens)──►  src/tokens.css   (gerado, nunca editado)
+     │
+     └──────────► ponte Figma (fase 3): Variables + modos Light/Dark
+baseline.manifest.json ──────────────► ponte Figma: component sets
+     ▲
+     └──(npm run check-manifest, roda no build)── validado contra src/
+```
 
-## Como funciona "instalar como um pacote npm"
+- **`tokens/`** — fonte única, formato W3C Design Tokens, em duas camadas:
+  `primitives.json` (valores brutos, paleta zinc/red) e
+  `semantic.light|dark.json` (significado de uso, sempre alias de
+  primitivo). O gerador impõe as regras — build falha se violar.
+  [ADR 0004](./docs/decisions/0004-tokens-w3c-como-fonte-unica.md)
+- **`baseline.manifest.json`** — contrato legível por máquina de cada
+  componente (partes, variantes, estados, tokens consumidos), para a ponte
+  com o Figma não precisar interpretar código React.
+  [ADR 0005](./docs/decisions/0005-manifest-como-ponte-para-figma.md)
+- **`src/components/`** — cada componente é "Base UI + tokens + CSS":
+  comportamento/acessibilidade 100% do Base UI
+  ([ADR 0001](./docs/decisions/0001-por-que-base-ui.md)), composição
+  Root/Parts com render prop
+  ([ADR 0002](./docs/decisions/0002-padrao-root-parts-e-render-prop.md)),
+  estado via data-attributes
+  ([ADR 0003](./docs/decisions/0003-estado-via-data-attributes.md)).
+  Nenhum CSS de componente contém valor bruto — só `var(--bl-*)`.
+- **`docs/figma/`** — [mapeamento](./docs/figma/mapeamento-figma.md) de
+  cada conceito do sistema para o conceito Figma equivalente
+  (tokens→Variables, manifest→component sets).
 
-Um pacote npm nada mais é que um `package.json` descrevendo nome, versão e
-onde estão os arquivos publicados, mais o próprio código. Normalmente você
-publica num registro (o npmjs.com público, ou um privado) e instala com
-`npm install nome-do-pacote`.
+## Componentes (fase 1)
 
-Este projeto pula a etapa de publicação num registro por enquanto — é só um
-repositório Git normal — e é instalado **direto do GitHub**:
+- `Button` — variantes `solid | outline | ghost | danger`, tamanhos
+  `sm | md | lg`, `focusableWhenDisabled` herdado do Base UI.
+- `Dialog` — modal completo (foco preso, Esc, clique fora, ARIA), partes
+  lógicas reexportadas puras, casca visual só onde há opinião de design.
+- `Field` — label↔controle associados, `aria-describedby`, estados de
+  validação (`data-invalid`...) e erro renderizado condicionalmente, tudo
+  do Base UI; o baseline-ui veste as partes.
+- `Switch` — `<button role="switch">` com teclado/ARIA prontos; o thumb se
+  move por CSS puro reagindo a `data-checked`.
+
+## Instalação
 
 ```bash
 npm install github:alehinjae/baseline-ui
 ```
 
-O npm sabe lidar com isso nativamente: ele clona o repositório, instala as
-dependências dele, e roda o script `prepare` (definido no `package.json`
-como `npm run build`) automaticamente — então o pacote chega já compilado
-(`dist/`) no seu `node_modules`, sem você precisar rodar nada manual. É
-basicamente o mesmo resultado de instalar de um registro, só que a "fonte
-da verdade" é o commit do GitHub, não uma versão publicada.
-
-Isso significa: qualquer mudança que a gente fizer aqui e enviar (`git
-push`) pode ser puxada de novo em qualquer projeto com
-`npm install github:alehinjae/baseline-ui` (ou fixando um commit específico:
-`npm install github:alehinjae/baseline-ui#<sha>`, pra não quebrar um projeto
-por uma mudança feita depois aqui).
-
-## Uso
-
-```bash
-npm install github:alehinjae/baseline-ui
-```
+O npm clona o repositório e roda o script `prepare` (build) automaticamente
+— o pacote chega compilado sem passo manual. Para fixar um commit:
+`npm install github:alehinjae/baseline-ui#<sha>`.
 
 No layout raiz da aplicação, uma única vez:
 
@@ -59,43 +70,56 @@ No layout raiz da aplicação, uma única vez:
 import 'baseline-ui/styles.css'
 ```
 
-Em qualquer componente:
+## Uso
 
 ```tsx
-import { Button, Dialog } from 'baseline-ui'
+import { Button, Dialog, Field, Switch } from 'baseline-ui'
 
 function Exemplo() {
   return (
-    <Dialog.Root>
-      <Dialog.Trigger render={<Button variant="outline" />}>
-        Abrir
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Backdrop />
-        <Dialog.Popup>
-          <Dialog.Title>Confirmar ação</Dialog.Title>
-          <Dialog.Description>Isso não pode ser desfeito.</Dialog.Description>
-          <Dialog.Actions>
-            <Dialog.Close render={<Button variant="ghost" />}>Cancelar</Dialog.Close>
-            <Button variant="danger">Confirmar</Button>
-          </Dialog.Actions>
-        </Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <>
+      <Field.Root>
+        <Field.Label>E-mail</Field.Label>
+        <Field.Control type="email" required placeholder="voce@exemplo.com" />
+        <Field.Description>Usado só para o link do calendário.</Field.Description>
+        <Field.Error match="valueMissing">Informe um e-mail.</Field.Error>
+      </Field.Root>
+
+      <Switch.Root defaultChecked>
+        <Switch.Thumb />
+      </Switch.Root>
+
+      <Dialog.Root>
+        <Dialog.Trigger render={<Button variant="outline" />}>Abrir</Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Backdrop />
+          <Dialog.Popup>
+            <Dialog.Title>Confirmar ação</Dialog.Title>
+            <Dialog.Description>Isso não pode ser desfeito.</Dialog.Description>
+            <Dialog.Actions>
+              <Dialog.Close render={<Button variant="ghost" />}>Cancelar</Dialog.Close>
+              <Button variant="danger">Confirmar</Button>
+            </Dialog.Actions>
+          </Dialog.Popup>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </>
   )
 }
 ```
 
-Repare no `Dialog.Trigger render={<Button variant="outline" />}` — é o
-`render` prop do Base UI (ver [ADR 0002](./docs/decisions/0002-padrao-root-parts-e-render-prop.md))
-fundindo o comportamento de abrir o dialog com a aparência do nosso Button,
-sem nenhum código de integração extra.
+O `render={<Button variant="outline" />}` é o render prop do Base UI
+(ADR 0002) fundindo comportamento e aparência sem código de integração.
 
 ## Desenvolvimento
 
 ```bash
 npm install
-npm run build      # gera dist/
-npm run dev        # build em watch mode
+npm run tokens          # regenera src/tokens.css a partir de tokens/*.json
+npm run check-manifest  # valida baseline.manifest.json contra src/ e tokens/
+npm run build           # tokens + check-manifest + tsup → dist/
 npm run typecheck
 ```
+
+Componente novo = **três entregas**: TSX + CSS (só tokens) + entrada no
+manifest. O build cobra a terceira automaticamente.

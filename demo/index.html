@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>baseline-ui — demo</title>
+<!-- Página de verificação interativa dos componentes (roadmap fase 1/4).
+     Consome o build real de dist/ — o mesmo artefato que um consumidor npm
+     recebe — com React e Base UI resolvidos via import map (esm.sh), sem
+     bundler próprio. Rode `npm run build` antes de abrir. -->
+<link rel="stylesheet" href="/dist/styles.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.1.0",
+    "react/jsx-runtime": "https://esm.sh/react@19.1.0/jsx-runtime",
+    "react-dom": "https://esm.sh/react-dom@19.1.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.1.0/client",
+    "@base-ui/react/button": "https://esm.sh/@base-ui/react@1.6.0/button?external=react,react-dom",
+    "@base-ui/react/dialog": "https://esm.sh/@base-ui/react@1.6.0/dialog?external=react,react-dom",
+    "@base-ui/react/field": "https://esm.sh/@base-ui/react@1.6.0/field?external=react,react-dom",
+    "@base-ui/react/switch": "https://esm.sh/@base-ui/react@1.6.0/switch?external=react,react-dom",
+    "baseline-ui": "/dist/index.js"
+  }
+}
+</script>
+<style>
+  body {
+    margin: 0;
+    padding: 32px;
+    background: var(--bl-color-bg);
+    color: var(--bl-color-text);
+    font-family: var(--bl-font-sans);
+  }
+  section { margin-bottom: 40px; max-width: 480px; }
+  h2 { font-size: var(--bl-font-size-lg); }
+  .row { display: flex; gap: var(--bl-space-3); flex-wrap: wrap; align-items: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="module">
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Button, Dialog, Field, Switch } from 'baseline-ui'
+
+const h = React.createElement
+
+function App() {
+  return h(React.Fragment, null,
+    h('section', null,
+      h('h2', null, 'Button'),
+      h('div', { className: 'row' },
+        h(Button, { variant: 'solid' }, 'Solid'),
+        h(Button, { variant: 'outline' }, 'Outline'),
+        h(Button, { variant: 'ghost' }, 'Ghost'),
+        h(Button, { variant: 'danger' }, 'Danger'),
+        h(Button, { variant: 'solid', disabled: true }, 'Disabled'),
+      ),
+    ),
+    h('section', null,
+      h('h2', null, 'Field'),
+      // validationMode default do Base UI é 'onSubmit'; aqui não há <form>,
+      // então validamos no blur para a demo ser autocontida
+      h(Field.Root, { validationMode: 'onBlur' },
+        h(Field.Label, null, 'E-mail'),
+        h(Field.Control, { type: 'email', required: true, placeholder: 'voce@exemplo.com' }),
+        h(Field.Description, null, 'Valide saindo do campo vazio: o erro aparece.'),
+        h(Field.Error, { match: 'valueMissing' }, 'Informe um e-mail.'),
+      ),
+    ),
+    h('section', null,
+      h('h2', null, 'Switch'),
+      h('div', { className: 'row' },
+        h(Switch.Root, { defaultChecked: true }, h(Switch.Thumb)),
+        h(Switch.Root, null, h(Switch.Thumb)),
+        h(Switch.Root, { disabled: true }, h(Switch.Thumb)),
+      ),
+    ),
+    h('section', null,
+      h('h2', null, 'Dialog'),
+      h(Dialog.Root, null,
+        h(Dialog.Trigger, { render: h(Button, { variant: 'outline' }) }, 'Abrir dialog'),
+        h(Dialog.Portal, null,
+          h(Dialog.Backdrop),
+          h(Dialog.Popup, null,
+            h(Dialog.Title, null, 'Confirmar ação'),
+            h(Dialog.Description, null, 'Isso não pode ser desfeito.'),
+            h(Dialog.Actions, null,
+              h(Dialog.Close, { render: h(Button, { variant: 'ghost' }) }, 'Cancelar'),
+              h(Button, { variant: 'danger' }, 'Confirmar'),
+            ),
+          ),
+        ),
+      ),
+    ),
+  )
+}
+
+createRoot(document.getElementById('root')).render(h(App))
+</script>
+</body>
+</html>

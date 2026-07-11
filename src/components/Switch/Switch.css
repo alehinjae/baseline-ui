@@ -1,0 +1,38 @@
+/* Dimensões do trilho/thumb são locais do componente (não tokens globais):
+   trilho = 2×thumb + 2×folga, thumb = space-4, folga = 2px. Se aparecerem
+   tamanhos de Switch (sm/lg), promovemos a tokens de componente — fase 2. */
+.bl-switch {
+  --_thumb: var(--bl-space-4);
+  --_gap: 2px;
+  display: inline-flex;
+  align-items: center;
+  width: calc(var(--_thumb) * 2 + var(--_gap) * 2);
+  padding: var(--_gap);
+  border: none;
+  border-radius: var(--bl-radius-full);
+  background: var(--bl-color-border);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.bl-switch[data-checked] {
+  background: var(--bl-color-accent);
+}
+.bl-switch[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.bl-switch:focus-visible {
+  outline: 2px solid var(--bl-color-accent);
+  outline-offset: 2px;
+}
+
+.bl-switch-thumb {
+  width: var(--_thumb);
+  height: var(--_thumb);
+  border-radius: var(--bl-radius-full);
+  background: var(--bl-color-bg);
+  transition: transform 0.15s ease;
+}
+.bl-switch-thumb[data-checked] {
+  transform: translateX(var(--_thumb));
+}

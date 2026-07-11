@@ -12,3 +12,5 @@ export { Button } from './components/Button/Button'
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button/Button'
 
 export * as Dialog from './components/Dialog/Dialog'
+export * as Field from './components/Field/Field'
+export * as Switch from './components/Switch/Switch'

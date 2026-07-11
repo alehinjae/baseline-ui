@@ -1,39 +1,68 @@
-/* Tokens do baseline-ui — a única fonte "opinativa" da biblioteca.
-   Base UI não define nada disso (é 100% sem estilo); é aqui que o
-   baseline-ui vira um design system de verdade, e não só um wrapper. */
+/* ARQUIVO GERADO — não edite à mão.
+   Fonte: tokens/*.json (formato W3C Design Tokens)
+   Gerador: scripts/build-tokens.mjs (npm run tokens)
+   É esta mesma fonte JSON que alimenta a ponte com o Figma
+   (ver docs/figma/mapeamento-figma.md). */
+
 :root {
-  --bl-color-bg: #ffffff;
-  --bl-color-bg-subtle: #f4f4f5;
-  --bl-color-text: #18181b;
-  --bl-color-text-muted: #71717a;
-  --bl-color-border: #e4e4e7;
-  --bl-color-accent: #18181b;
-  --bl-color-accent-text: #ffffff;
-  --bl-color-danger: #dc2626;
-
-  --bl-radius-sm: 6px;
-  --bl-radius-md: 10px;
-  --bl-radius-lg: 16px;
-
+  /* camada 1 — primitivos (coleção 'Primitives' no Figma) */
+  --bl-color-white: #ffffff;
+  --bl-color-black: #000000;
+  --bl-color-zinc-50: #fafafa;
+  --bl-color-zinc-100: #f4f4f5;
+  --bl-color-zinc-200: #e4e4e7;
+  --bl-color-zinc-300: #d4d4d8;
+  --bl-color-zinc-400: #a1a1aa;
+  --bl-color-zinc-500: #71717a;
+  --bl-color-zinc-600: #52525b;
+  --bl-color-zinc-700: #3f3f46;
+  --bl-color-zinc-800: #27272a;
+  --bl-color-zinc-900: #18181b;
+  --bl-color-zinc-950: #09090b;
+  --bl-color-red-400: #f87171;
+  --bl-color-red-500: #ef4444;
+  --bl-color-red-600: #dc2626;
   --bl-space-1: 4px;
   --bl-space-2: 8px;
   --bl-space-3: 12px;
   --bl-space-4: 16px;
   --bl-space-5: 24px;
-
+  --bl-radius-sm: 6px;
+  --bl-radius-md: 10px;
+  --bl-radius-lg: 16px;
+  --bl-radius-full: 9999px;
   --bl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --bl-shadow-popup: 0 10px 38px -10px rgba(0, 0, 0, 0.25), 0 10px 20px -15px rgba(0, 0, 0, 0.2);
+  --bl-font-size-sm: 13px;
+  --bl-font-size-md: 14px;
+  --bl-font-size-lg: 16px;
+  --bl-font-weight-regular: 400;
+  --bl-font-weight-medium: 500;
+  --bl-font-weight-semibold: 600;
+  --bl-shadow-popup: 0px 10px 38px -10px #00000040, 0px 10px 20px -15px #00000033;
+
+  /* camada 2 — semânticos, modo claro (coleção 'Semantic', modo 'Light') */
+  --bl-color-bg: var(--bl-color-white);
+  --bl-color-bg-subtle: var(--bl-color-zinc-100);
+  --bl-color-text: var(--bl-color-zinc-900);
+  --bl-color-text-muted: var(--bl-color-zinc-500);
+  --bl-color-border: var(--bl-color-zinc-200);
+  --bl-color-accent: var(--bl-color-zinc-900);
+  --bl-color-accent-text: var(--bl-color-white);
+  --bl-color-danger: var(--bl-color-red-600);
+  --bl-color-danger-text: var(--bl-color-white);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bl-color-bg: #18181b;
-    --bl-color-bg-subtle: #27272a;
-    --bl-color-text: #f4f4f5;
-    --bl-color-text-muted: #a1a1aa;
-    --bl-color-border: #3f3f46;
-    --bl-color-accent: #f4f4f5;
-    --bl-color-accent-text: #18181b;
-    --bl-color-danger: #f87171;
+    /* camada 2 — semânticos, modo escuro (coleção 'Semantic', modo 'Dark') */
+    --bl-color-bg: var(--bl-color-zinc-900);
+    --bl-color-bg-subtle: var(--bl-color-zinc-800);
+    --bl-color-text: var(--bl-color-zinc-100);
+    --bl-color-text-muted: var(--bl-color-zinc-400);
+    --bl-color-border: var(--bl-color-zinc-700);
+    --bl-color-accent: var(--bl-color-zinc-100);
+    --bl-color-accent-text: var(--bl-color-zinc-900);
+    --bl-color-danger: var(--bl-color-red-400);
+    --bl-color-danger-text: var(--bl-color-white);
   }
 }

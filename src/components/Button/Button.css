@@ -4,7 +4,7 @@
   justify-content: center;
   gap: var(--bl-space-2);
   font-family: var(--bl-font-sans);
-  font-weight: 500;
+  font-weight: var(--bl-font-weight-medium);
   border: 1px solid transparent;
   border-radius: var(--bl-radius-md);
   cursor: pointer;
@@ -17,9 +17,9 @@
 }
 
 /* tamanho */
-.bl-button[data-bl-size='sm'] { padding: var(--bl-space-1) var(--bl-space-3); font-size: 13px; }
-.bl-button[data-bl-size='md'] { padding: var(--bl-space-2) var(--bl-space-4); font-size: 14px; }
-.bl-button[data-bl-size='lg'] { padding: var(--bl-space-3) var(--bl-space-5); font-size: 16px; }
+.bl-button[data-bl-size='sm'] { padding: var(--bl-space-1) var(--bl-space-3); font-size: var(--bl-font-size-sm); }
+.bl-button[data-bl-size='md'] { padding: var(--bl-space-2) var(--bl-space-4); font-size: var(--bl-font-size-md); }
+.bl-button[data-bl-size='lg'] { padding: var(--bl-space-3) var(--bl-space-5); font-size: var(--bl-font-size-lg); }
 
 /* variante */
 .bl-button[data-bl-variant='solid'] {
@@ -49,7 +49,7 @@
 
 .bl-button[data-bl-variant='danger'] {
   background: var(--bl-color-danger);
-  color: #ffffff;
+  color: var(--bl-color-danger-text);
 }
 .bl-button[data-bl-variant='danger']:not([data-disabled]):hover {
   opacity: 0.85;
