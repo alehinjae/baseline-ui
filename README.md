@@ -42,7 +42,9 @@ baseline.manifest.json ──────────────► ponte Figma
   cada conceito do sistema para o conceito Figma equivalente
   (tokens→Variables, manifest→component sets).
 
-## Componentes (fase 1)
+## Componentes
+
+**Fase 1 — sobre o Base UI (comportamento herdado):**
 
 - `Button` — variantes `solid | outline | ghost | danger`, tamanhos
   `sm | md | lg`, `focusableWhenDisabled` herdado do Base UI.
@@ -53,6 +55,17 @@ baseline.manifest.json ──────────────► ponte Figma
   do Base UI; o baseline-ui veste as partes.
 - `Switch` — `<button role="switch">` com teclado/ARIA prontos; o thumb se
   move por CSS puro reagindo a `data-checked`.
+
+**Fase 2 — cobertura total ([ADR 0007](./docs/decisions/0007-fase-2-cobertura-total.md)):**
+
+Sobre o Base UI: `Tabs` (teclado/roving tabindex/ARIA), `Accordion`
+(heading semântico + animação pela altura medida no motor), `Progress`
+(role/aria-value* prontos, variantes de cor verificadas por contraste).
+
+Puros (tokens + CSS, sem motor — não há comportamento a herdar): `Card`,
+`Text`, `Badge` (matizes decorativos), `Alert` (status semânticos),
+`Spinner`, `Stack` e `Grid` (gap só na escala de tokens — sem px
+arbitrário).
 
 ## Instalação
 

@@ -1,5 +1,5 @@
 {
-  "$description": "Camada 2 — semânticos, modo claro (tema white: branco + cinzas zinc, contraste verificado por scripts/check-contrast.mjs no build — ADR 0006). Todo valor é um alias {caminho} para um primitivo; é isto que os componentes consomem. No Figma, vira a coleção de Variables 'Semantic', modo 'Light'. Este arquivo e o semantic.dark.json precisam ter exatamente as mesmas chaves — o build falha se divergirem.",
+  "$description": "Camada 2 — semânticos, modo claro (tema white: branco + cinzas zinc, contraste verificado por scripts/check-contrast.mjs no build — ADR 0006). Todo valor é um alias {caminho} para um primitivo; é isto que os componentes consomem. No Figma, vira a coleção de Variables 'Semantic', modo 'Light'. Este arquivo e o semantic.dark.json precisam ter exatamente as mesmas chaves — o build falha se divergirem. Fase 2 (ADR 0007): tokens de status (info/success/warning + danger-soft) para Alert/Progress/Badge, e matizes decorativos (purple/pink) para categorias visuais como os tipos do calendário de planejamento.",
   "color": {
     "$type": "color",
     "bg": { "$value": "{color.white}" },
@@ -11,6 +11,27 @@
     "accent": { "$value": "{color.zinc.800}" },
     "accent-text": { "$value": "{color.white}" },
     "danger": { "$value": "{color.red.600}" },
-    "danger-text": { "$value": "{color.white}" }
+    "danger-text": { "$value": "{color.white}" },
+    "danger-soft-bg": { "$value": "{color.red.50}" },
+    "danger-soft-text": { "$value": "{color.red.700}" },
+    "danger-soft-border": { "$value": "{color.red.200}" },
+    "info-soft-bg": { "$value": "{color.blue.50}" },
+    "info-soft-text": { "$value": "{color.blue.700}" },
+    "info-soft-border": { "$value": "{color.blue.200}" },
+    "info-solid": { "$value": "{color.blue.600}" },
+    "success-soft-bg": { "$value": "{color.green.50}" },
+    "success-soft-text": { "$value": "{color.green.700}" },
+    "success-soft-border": { "$value": "{color.green.200}" },
+    "success-solid": { "$value": "{color.green.700}" },
+    "warning-soft-bg": { "$value": "{color.orange.50}" },
+    "warning-soft-text": { "$value": "{color.orange.700}" },
+    "warning-soft-border": { "$value": "{color.orange.200}" },
+    "warning-solid": { "$value": "{color.orange.600}" },
+    "purple-soft-bg": { "$value": "{color.purple.50}" },
+    "purple-soft-text": { "$value": "{color.purple.700}" },
+    "purple-soft-border": { "$value": "{color.purple.200}" },
+    "pink-soft-bg": { "$value": "{color.pink.50}" },
+    "pink-soft-text": { "$value": "{color.pink.700}" },
+    "pink-soft-border": { "$value": "{color.pink.200}" }
   }
 }

@@ -1,0 +1,49 @@
+.bl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-space-1);
+  font-family: var(--bl-font-sans);
+  font-size: var(--bl-font-size-xs);
+  font-weight: var(--bl-font-weight-medium);
+  line-height: 1.4;
+  padding: 0 var(--bl-space-2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid;
+}
+
+/* cada matiz usa o trio soft (bg/text/border) verificado por contraste no build */
+.bl-badge[data-bl-variant='gray'] {
+  background: var(--bl-color-bg-subtle);
+  color: var(--bl-color-text-muted);
+  border-color: var(--bl-color-border);
+}
+.bl-badge[data-bl-variant='blue'] {
+  background: var(--bl-color-info-soft-bg);
+  color: var(--bl-color-info-soft-text);
+  border-color: var(--bl-color-info-soft-border);
+}
+.bl-badge[data-bl-variant='green'] {
+  background: var(--bl-color-success-soft-bg);
+  color: var(--bl-color-success-soft-text);
+  border-color: var(--bl-color-success-soft-border);
+}
+.bl-badge[data-bl-variant='orange'] {
+  background: var(--bl-color-warning-soft-bg);
+  color: var(--bl-color-warning-soft-text);
+  border-color: var(--bl-color-warning-soft-border);
+}
+.bl-badge[data-bl-variant='red'] {
+  background: var(--bl-color-danger-soft-bg);
+  color: var(--bl-color-danger-soft-text);
+  border-color: var(--bl-color-danger-soft-border);
+}
+.bl-badge[data-bl-variant='purple'] {
+  background: var(--bl-color-purple-soft-bg);
+  color: var(--bl-color-purple-soft-text);
+  border-color: var(--bl-color-purple-soft-border);
+}
+.bl-badge[data-bl-variant='pink'] {
+  background: var(--bl-color-pink-soft-bg);
+  color: var(--bl-color-pink-soft-text);
+  border-color: var(--bl-color-pink-soft-border);
+}
