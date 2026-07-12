@@ -1,7 +1,7 @@
 {
   "$description": "Contrato legível por máquina do baseline-ui. Descreve cada componente — partes, variantes, estados e tokens consumidos — para que uma ferramenta (script, MCP do Figma, plugin) consiga reconstruir a biblioteca como componentes/Variables no Figma sem ler o código-fonte. Mantido à mão junto com cada componente; o build falha se ele divergir do que src/ exporta (scripts/check-manifest.mjs). Ver ADR 0005 e docs/figma/mapeamento-figma.md.",
   "name": "baseline-ui",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "conventions": {
     "cssVarPrefix": "--bl-",
     "cssClassPrefix": "bl-",
@@ -94,6 +94,217 @@
       "tokens": [
         "color.border-strong", "color.accent", "color.bg",
         "space.4", "radius.full"
+      ]
+    },
+    "Tabs": {
+      "kind": "compound",
+      "base": "@base-ui/react/tabs",
+      "parts": {
+        "Root": { "styled": true, "cssClass": "bl-tabs" },
+        "List": { "styled": true, "cssClass": "bl-tabs-list" },
+        "Tab": { "styled": true, "cssClass": "bl-tabs-tab" },
+        "Panel": { "styled": true, "cssClass": "bl-tabs-panel" },
+        "Indicator": { "styled": false }
+      },
+      "states": ["active", "hover", "focus-visible", "disabled"],
+      "tokens": [
+        "color.bg", "color.bg-subtle", "color.text", "color.text-muted",
+        "color.accent", "space.1", "space.3", "radius.sm", "radius.md",
+        "shadow.card", "font.sans", "font-size.sm", "font-weight.semibold"
+      ]
+    },
+    "Accordion": {
+      "kind": "compound",
+      "base": "@base-ui/react/accordion",
+      "parts": {
+        "Root": { "styled": true, "cssClass": "bl-accordion" },
+        "Item": { "styled": true, "cssClass": "bl-accordion-item" },
+        "Header": { "styled": true, "cssClass": "bl-accordion-header" },
+        "Trigger": { "styled": true, "cssClass": "bl-accordion-trigger" },
+        "Panel": { "styled": true, "cssClass": "bl-accordion-panel" }
+      },
+      "states": ["open", "hover", "focus-visible", "disabled", "starting-style", "ending-style"],
+      "tokens": [
+        "color.bg-subtle", "color.text", "color.text-muted", "color.border",
+        "color.accent", "space.2", "space.3", "space.4",
+        "font.sans", "font-size.md", "font-weight.semibold"
+      ]
+    },
+    "Progress": {
+      "kind": "compound",
+      "base": "@base-ui/react/progress",
+      "parts": {
+        "Root": { "styled": true, "cssClass": "bl-progress" },
+        "Track": { "styled": true, "cssClass": "bl-progress-track" },
+        "Indicator": { "styled": true, "cssClass": "bl-progress-indicator" },
+        "Label": { "styled": false },
+        "Value": { "styled": false }
+      },
+      "props": {
+        "variant": {
+          "values": ["default", "info", "success", "warning", "danger"],
+          "default": "default",
+          "dataAttribute": "data-bl-variant",
+          "on": "Root"
+        }
+      },
+      "states": ["progressing", "complete", "indeterminate"],
+      "tokens": [
+        "color.bg-subtle", "color.accent", "color.info-solid",
+        "color.success-solid", "color.warning-solid", "color.danger",
+        "radius.full"
+      ]
+    },
+    "Card": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-card",
+      "props": {
+        "padding": {
+          "values": ["none", "sm", "md", "lg"],
+          "default": "md",
+          "dataAttribute": "data-bl-padding"
+        },
+        "interactive": {
+          "values": [true, false],
+          "default": false,
+          "dataAttribute": "data-bl-interactive"
+        }
+      },
+      "states": ["hover"],
+      "tokens": [
+        "color.bg", "color.border", "color.border-strong",
+        "radius.lg", "shadow.card", "shadow.popup",
+        "space.3", "space.4", "space.6"
+      ]
+    },
+    "Text": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-text",
+      "props": {
+        "variant": {
+          "values": ["h1", "h2", "h3", "h4", "body-sm", "body-md", "body-lg", "muted-sm", "muted-md"],
+          "default": "body-md",
+          "dataAttribute": "data-bl-variant"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "color.text", "color.text-muted", "font.sans",
+        "font-size.xs", "font-size.md", "font-size.lg", "font-size.xl", "font-size.2xl",
+        "font-weight.medium", "font-weight.semibold", "font-weight.bold"
+      ]
+    },
+    "Badge": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-badge",
+      "props": {
+        "variant": {
+          "values": ["gray", "blue", "green", "orange", "red", "purple", "pink"],
+          "default": "gray",
+          "dataAttribute": "data-bl-variant"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "color.bg-subtle", "color.text-muted", "color.border",
+        "color.info-soft-bg", "color.info-soft-text", "color.info-soft-border",
+        "color.success-soft-bg", "color.success-soft-text", "color.success-soft-border",
+        "color.warning-soft-bg", "color.warning-soft-text", "color.warning-soft-border",
+        "color.danger-soft-bg", "color.danger-soft-text", "color.danger-soft-border",
+        "color.purple-soft-bg", "color.purple-soft-text", "color.purple-soft-border",
+        "color.pink-soft-bg", "color.pink-soft-text", "color.pink-soft-border",
+        "space.1", "space.2", "radius.sm", "font.sans", "font-size.xs", "font-weight.medium"
+      ]
+    },
+    "Alert": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-alert",
+      "props": {
+        "variant": {
+          "values": ["info", "success", "warning", "danger"],
+          "default": "info",
+          "dataAttribute": "data-bl-variant"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "color.info-soft-bg", "color.info-soft-text", "color.info-soft-border",
+        "color.success-soft-bg", "color.success-soft-text", "color.success-soft-border",
+        "color.warning-soft-bg", "color.warning-soft-text", "color.warning-soft-border",
+        "color.danger-soft-bg", "color.danger-soft-text", "color.danger-soft-border",
+        "space.1", "space.2", "space.3", "space.4", "radius.md",
+        "font.sans", "font-size.md", "font-weight.semibold", "font-weight.bold"
+      ]
+    },
+    "Spinner": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-spinner",
+      "props": {
+        "size": {
+          "values": ["sm", "md", "lg"],
+          "default": "md",
+          "dataAttribute": "data-bl-size"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "color.border", "color.accent", "radius.full",
+        "space.4", "space.5", "space.6"
+      ]
+    },
+    "Stack": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-stack",
+      "props": {
+        "direction": {
+          "values": ["row", "column"],
+          "default": "column",
+          "dataAttribute": "data-bl-direction"
+        },
+        "gap": {
+          "values": [0, 1, 2, 3, 4, 5, 6, 7],
+          "default": 4,
+          "dataAttribute": "data-bl-gap"
+        },
+        "align": {
+          "values": ["start", "center", "end", "stretch", "baseline"],
+          "dataAttribute": "data-bl-align"
+        },
+        "justify": {
+          "values": ["start", "center", "end", "between", "around"],
+          "dataAttribute": "data-bl-justify"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"
+      ]
+    },
+    "Grid": {
+      "kind": "single",
+      "base": null,
+      "cssClass": "bl-grid",
+      "props": {
+        "cols": {
+          "values": [1, 2, 3, 4, 5, 6, 7, 8, 12],
+          "default": 1,
+          "dataAttribute": "data-bl-cols"
+        },
+        "gap": {
+          "values": [0, 1, 2, 3, 4, 5, 6, 7],
+          "default": 4,
+          "dataAttribute": "data-bl-gap"
+        }
+      },
+      "states": [],
+      "tokens": [
+        "space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"
       ]
     }
   }

@@ -1,0 +1,27 @@
+.bl-progress {
+  width: 100%;
+}
+
+.bl-progress-track {
+  display: block;
+  height: 6px;
+  width: 100%;
+  background: var(--bl-color-bg-subtle);
+  border-radius: var(--bl-radius-full);
+  overflow: hidden;
+}
+
+.bl-progress-indicator {
+  display: block;
+  height: 100%;
+  border-radius: var(--bl-radius-full);
+  background: var(--bl-color-accent);
+  transition: width 0.3s ease;
+}
+
+/* variante de cor declarada no Root, pintada no Indicator descendente.
+   Todos os pares preenchimento×trilho são verificados no build (1.4.11). */
+.bl-progress[data-bl-variant='info'] .bl-progress-indicator { background: var(--bl-color-info-solid); }
+.bl-progress[data-bl-variant='success'] .bl-progress-indicator { background: var(--bl-color-success-solid); }
+.bl-progress[data-bl-variant='warning'] .bl-progress-indicator { background: var(--bl-color-warning-solid); }
+.bl-progress[data-bl-variant='danger'] .bl-progress-indicator { background: var(--bl-color-danger); }

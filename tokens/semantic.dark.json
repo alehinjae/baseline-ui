@@ -1,5 +1,5 @@
 {
-  "$description": "Camada 2 — semânticos, modo escuro. Mesmas chaves do semantic.light.json, apontando para outros primitivos; contraste verificado por scripts/check-contrast.mjs no build (ADR 0006). No Figma, vira o modo 'Dark' da coleção 'Semantic'. No CSS gerado, vira o bloco @media (prefers-color-scheme: dark).",
+  "$description": "Camada 2 — semânticos, modo escuro. Mesmas chaves do semantic.light.json, apontando para outros primitivos; contraste verificado por scripts/check-contrast.mjs no build (ADR 0006). No Figma, vira o modo 'Dark' da coleção 'Semantic'. No CSS gerado, vira o bloco @media (prefers-color-scheme: dark). Fase 2 (ADR 0007): nos matizes, o escuro usa 950 como fundo suave, 400 como texto/preenchimento e 700 como borda suave.",
   "color": {
     "$type": "color",
     "bg": { "$value": "{color.zinc.900}" },
@@ -11,6 +11,27 @@
     "accent": { "$value": "{color.zinc.100}" },
     "accent-text": { "$value": "{color.zinc.900}" },
     "danger": { "$value": "{color.red.400}" },
-    "danger-text": { "$value": "{color.zinc.950}" }
+    "danger-text": { "$value": "{color.zinc.950}" },
+    "danger-soft-bg": { "$value": "{color.red.950}" },
+    "danger-soft-text": { "$value": "{color.red.400}" },
+    "danger-soft-border": { "$value": "{color.red.700}" },
+    "info-soft-bg": { "$value": "{color.blue.950}" },
+    "info-soft-text": { "$value": "{color.blue.400}" },
+    "info-soft-border": { "$value": "{color.blue.700}" },
+    "info-solid": { "$value": "{color.blue.400}" },
+    "success-soft-bg": { "$value": "{color.green.950}" },
+    "success-soft-text": { "$value": "{color.green.400}" },
+    "success-soft-border": { "$value": "{color.green.700}" },
+    "success-solid": { "$value": "{color.green.400}" },
+    "warning-soft-bg": { "$value": "{color.orange.950}" },
+    "warning-soft-text": { "$value": "{color.orange.400}" },
+    "warning-soft-border": { "$value": "{color.orange.700}" },
+    "warning-solid": { "$value": "{color.orange.400}" },
+    "purple-soft-bg": { "$value": "{color.purple.950}" },
+    "purple-soft-text": { "$value": "{color.purple.400}" },
+    "purple-soft-border": { "$value": "{color.purple.700}" },
+    "pink-soft-bg": { "$value": "{color.pink.950}" },
+    "pink-soft-text": { "$value": "{color.pink.400}" },
+    "pink-soft-border": { "$value": "{color.pink.700}" }
   }
 }

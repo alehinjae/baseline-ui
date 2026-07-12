@@ -1,0 +1,20 @@
+.bl-card {
+  background: var(--bl-color-bg);
+  border: 1px solid var(--bl-color-border);
+  border-radius: var(--bl-radius-lg);
+  box-shadow: var(--bl-shadow-card);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.bl-card[data-bl-padding='none'] { padding: 0; }
+.bl-card[data-bl-padding='sm'] { padding: var(--bl-space-3); }
+.bl-card[data-bl-padding='md'] { padding: var(--bl-space-4); }
+.bl-card[data-bl-padding='lg'] { padding: var(--bl-space-6); }
+
+.bl-card[data-bl-interactive] {
+  cursor: pointer;
+}
+.bl-card[data-bl-interactive]:hover {
+  border-color: var(--bl-color-border-strong);
+  box-shadow: var(--bl-shadow-popup);
+}

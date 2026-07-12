@@ -1,5 +1,5 @@
 {
-  "$description": "Camada 1 — primitivos. Valores brutos, sem significado de uso. Nenhum componente consome daqui diretamente; só a camada semântica referencia. No Figma, vira a coleção de Variables 'Primitives' (modo único). Paleta zinc/red herdada do Tailwind — proveniência documentada no ADR 0004.",
+  "$description": "Camada 1 — primitivos. Valores brutos, sem significado de uso. Nenhum componente consome daqui diretamente; só a camada semântica referencia. No Figma, vira a coleção de Variables 'Primitives' (modo único). Paleta zinc/red herdada do Tailwind — proveniência documentada no ADR 0004. Os matizes de status/categoria (blue, green, orange, purple, pink) entraram na fase 2 (ADR 0007) com 6 paradas cada: 50/200 (fundos e bordas suaves no claro), 400 (texto/preenchimento no escuro), 600/700 (preenchimento/texto no claro), 950 (fundo suave no escuro).",
   "color": {
     "$type": "color",
     "white": { "$value": "#ffffff" },
@@ -18,9 +18,53 @@
       "950": { "$value": "#09090b" }
     },
     "red": {
+      "50": { "$value": "#fef2f2" },
+      "200": { "$value": "#fecaca" },
       "400": { "$value": "#f87171" },
       "500": { "$value": "#ef4444" },
-      "600": { "$value": "#dc2626" }
+      "600": { "$value": "#dc2626" },
+      "700": { "$value": "#b91c1c" },
+      "950": { "$value": "#450a0a" }
+    },
+    "blue": {
+      "50": { "$value": "#eff6ff" },
+      "200": { "$value": "#bfdbfe" },
+      "400": { "$value": "#60a5fa" },
+      "600": { "$value": "#2563eb" },
+      "700": { "$value": "#1d4ed8" },
+      "950": { "$value": "#172554" }
+    },
+    "green": {
+      "50": { "$value": "#f0fdf4" },
+      "200": { "$value": "#bbf7d0" },
+      "400": { "$value": "#4ade80" },
+      "600": { "$value": "#16a34a" },
+      "700": { "$value": "#15803d" },
+      "950": { "$value": "#052e16" }
+    },
+    "orange": {
+      "50": { "$value": "#fff7ed" },
+      "200": { "$value": "#fed7aa" },
+      "400": { "$value": "#fb923c" },
+      "600": { "$value": "#ea580c" },
+      "700": { "$value": "#c2410c" },
+      "950": { "$value": "#431407" }
+    },
+    "purple": {
+      "50": { "$value": "#faf5ff" },
+      "200": { "$value": "#e9d5ff" },
+      "400": { "$value": "#c084fc" },
+      "600": { "$value": "#9333ea" },
+      "700": { "$value": "#7e22ce" },
+      "950": { "$value": "#3b0764" }
+    },
+    "pink": {
+      "50": { "$value": "#fdf2f8" },
+      "200": { "$value": "#fbcfe8" },
+      "400": { "$value": "#f472b6" },
+      "600": { "$value": "#db2777" },
+      "700": { "$value": "#be185d" },
+      "950": { "$value": "#500724" }
     }
   },
   "space": {
@@ -29,7 +73,9 @@
     "2": { "$value": "8px" },
     "3": { "$value": "12px" },
     "4": { "$value": "16px" },
-    "5": { "$value": "24px" }
+    "5": { "$value": "24px" },
+    "6": { "$value": "32px" },
+    "7": { "$value": "40px" }
   },
   "radius": {
     "$type": "dimension",
@@ -46,17 +92,27 @@
   },
   "font-size": {
     "$type": "dimension",
+    "xs": { "$value": "12px" },
     "sm": { "$value": "13px" },
     "md": { "$value": "14px" },
-    "lg": { "$value": "16px" }
+    "lg": { "$value": "16px" },
+    "xl": { "$value": "18px" },
+    "2xl": { "$value": "24px" }
   },
   "font-weight": {
     "$type": "fontWeight",
     "regular": { "$value": 400 },
     "medium": { "$value": 500 },
-    "semibold": { "$value": 600 }
+    "semibold": { "$value": 600 },
+    "bold": { "$value": 700 }
   },
   "shadow": {
+    "card": {
+      "$type": "shadow",
+      "$value": [
+        { "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px", "color": "#0000000d" }
+      ]
+    },
     "popup": {
       "$type": "shadow",
       "$value": [

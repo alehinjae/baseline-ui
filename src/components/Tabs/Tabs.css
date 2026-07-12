@@ -1,0 +1,48 @@
+.bl-tabs {
+  width: 100%;
+  font-family: var(--bl-font-sans);
+}
+
+/* trilho segmentado: o grupo tem fundo sutil e a aba ativa "flutua" em cima */
+.bl-tabs-list {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-space-1);
+  background: var(--bl-color-bg-subtle);
+  border-radius: var(--bl-radius-md);
+  padding: var(--bl-space-1);
+  width: max-content;
+}
+
+.bl-tabs-tab {
+  border: none;
+  background: transparent;
+  color: var(--bl-color-text-muted);
+  font-family: var(--bl-font-sans);
+  font-size: var(--bl-font-size-sm);
+  font-weight: var(--bl-font-weight-semibold);
+  padding: var(--bl-space-1) var(--bl-space-3);
+  border-radius: var(--bl-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.bl-tabs-tab:hover:not([data-active]) {
+  color: var(--bl-color-text);
+}
+
+/* estado ativo vem do motor via data-active — sem prop drilling */
+.bl-tabs-tab[data-active] {
+  background: var(--bl-color-bg);
+  color: var(--bl-color-text);
+  box-shadow: var(--bl-shadow-card);
+}
+
+.bl-tabs-tab:focus-visible {
+  outline: 2px solid var(--bl-color-accent);
+  outline-offset: 2px;
+}
+
+.bl-tabs-panel {
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 {
   "name": "baseline-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "Design system do ecossistema — Base UI como motor de comportamento, tokens W3C como fonte única, manifest pronto para a ponte com o Figma.",
   "type": "module",
