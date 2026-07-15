@@ -115,8 +115,47 @@
   --bl-color-pink-soft-border: var(--bl-color-pink-200);
 }
 
+/* Override manual de tema via atributo data-bl-theme no <html>/<:root>.
+   Sem o atributo, o tema segue o sistema (a media query abaixo). Com
+   data-bl-theme="light"|"dark", o app força o modo (ex.: um toggle de tema).
+   'light' explícito precisa vencer a media query de sistema-escuro, por isso
+   o :not() nela e o bloco light dedicado. */
+:root[data-bl-theme="light"] {
+  --bl-color-bg: var(--bl-color-white);
+  --bl-color-bg-subtle: var(--bl-color-zinc-100);
+  --bl-color-text: var(--bl-color-zinc-800);
+  --bl-color-text-muted: var(--bl-color-zinc-600);
+  --bl-color-border: var(--bl-color-zinc-200);
+  --bl-color-border-strong: var(--bl-color-zinc-500);
+  --bl-color-accent: var(--bl-color-zinc-800);
+  --bl-color-accent-text: var(--bl-color-white);
+  --bl-color-danger: var(--bl-color-red-600);
+  --bl-color-danger-text: var(--bl-color-white);
+  --bl-color-danger-soft-bg: var(--bl-color-red-50);
+  --bl-color-danger-soft-text: var(--bl-color-red-700);
+  --bl-color-danger-soft-border: var(--bl-color-red-200);
+  --bl-color-info-soft-bg: var(--bl-color-blue-50);
+  --bl-color-info-soft-text: var(--bl-color-blue-700);
+  --bl-color-info-soft-border: var(--bl-color-blue-200);
+  --bl-color-info-solid: var(--bl-color-blue-600);
+  --bl-color-success-soft-bg: var(--bl-color-green-50);
+  --bl-color-success-soft-text: var(--bl-color-green-700);
+  --bl-color-success-soft-border: var(--bl-color-green-200);
+  --bl-color-success-solid: var(--bl-color-green-700);
+  --bl-color-warning-soft-bg: var(--bl-color-orange-50);
+  --bl-color-warning-soft-text: var(--bl-color-orange-700);
+  --bl-color-warning-soft-border: var(--bl-color-orange-200);
+  --bl-color-warning-solid: var(--bl-color-orange-600);
+  --bl-color-purple-soft-bg: var(--bl-color-purple-50);
+  --bl-color-purple-soft-text: var(--bl-color-purple-700);
+  --bl-color-purple-soft-border: var(--bl-color-purple-200);
+  --bl-color-pink-soft-bg: var(--bl-color-pink-50);
+  --bl-color-pink-soft-text: var(--bl-color-pink-700);
+  --bl-color-pink-soft-border: var(--bl-color-pink-200);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-bl-theme="light"]) {
     /* camada 2 — semânticos, modo escuro (coleção 'Semantic', modo 'Dark') */
     --bl-color-bg: var(--bl-color-zinc-900);
     --bl-color-bg-subtle: var(--bl-color-zinc-800);
@@ -150,4 +189,38 @@
     --bl-color-pink-soft-text: var(--bl-color-pink-400);
     --bl-color-pink-soft-border: var(--bl-color-pink-700);
   }
+}
+
+:root[data-bl-theme="dark"] {
+  --bl-color-bg: var(--bl-color-zinc-900);
+  --bl-color-bg-subtle: var(--bl-color-zinc-800);
+  --bl-color-text: var(--bl-color-zinc-100);
+  --bl-color-text-muted: var(--bl-color-zinc-400);
+  --bl-color-border: var(--bl-color-zinc-700);
+  --bl-color-border-strong: var(--bl-color-zinc-500);
+  --bl-color-accent: var(--bl-color-zinc-100);
+  --bl-color-accent-text: var(--bl-color-zinc-900);
+  --bl-color-danger: var(--bl-color-red-400);
+  --bl-color-danger-text: var(--bl-color-zinc-950);
+  --bl-color-danger-soft-bg: var(--bl-color-red-950);
+  --bl-color-danger-soft-text: var(--bl-color-red-400);
+  --bl-color-danger-soft-border: var(--bl-color-red-700);
+  --bl-color-info-soft-bg: var(--bl-color-blue-950);
+  --bl-color-info-soft-text: var(--bl-color-blue-400);
+  --bl-color-info-soft-border: var(--bl-color-blue-700);
+  --bl-color-info-solid: var(--bl-color-blue-400);
+  --bl-color-success-soft-bg: var(--bl-color-green-950);
+  --bl-color-success-soft-text: var(--bl-color-green-400);
+  --bl-color-success-soft-border: var(--bl-color-green-700);
+  --bl-color-success-solid: var(--bl-color-green-400);
+  --bl-color-warning-soft-bg: var(--bl-color-orange-950);
+  --bl-color-warning-soft-text: var(--bl-color-orange-400);
+  --bl-color-warning-soft-border: var(--bl-color-orange-700);
+  --bl-color-warning-solid: var(--bl-color-orange-400);
+  --bl-color-purple-soft-bg: var(--bl-color-purple-950);
+  --bl-color-purple-soft-text: var(--bl-color-purple-400);
+  --bl-color-purple-soft-border: var(--bl-color-purple-700);
+  --bl-color-pink-soft-bg: var(--bl-color-pink-950);
+  --bl-color-pink-soft-text: var(--bl-color-pink-400);
+  --bl-color-pink-soft-border: var(--bl-color-pink-700);
 }

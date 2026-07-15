@@ -111,11 +111,24 @@ ${primitiveTokens.map((t) => line(t.path, toCss(t))).join('\n')}
 ${light.map((t) => line(t.path, t.css)).join('\n')}
 }
 
+/* Override manual de tema via atributo data-bl-theme no <html>/<:root>.
+   Sem o atributo, o tema segue o sistema (a media query abaixo). Com
+   data-bl-theme="light"|"dark", o app força o modo (ex.: um toggle de tema).
+   'light' explícito precisa vencer a media query de sistema-escuro, por isso
+   o :not() nela e o bloco light dedicado. */
+:root[data-bl-theme="light"] {
+${light.map((t) => line(t.path, t.css)).join('\n')}
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-bl-theme="light"]) {
     /* camada 2 — semânticos, modo escuro (coleção 'Semantic', modo 'Dark') */
 ${dark.map((t) => '  ' + line(t.path, t.css)).join('\n')}
   }
+}
+
+:root[data-bl-theme="dark"] {
+${dark.map((t) => line(t.path, t.css)).join('\n')}
 }
 `
 
