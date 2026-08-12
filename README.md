@@ -9,6 +9,8 @@ cada decisão agora é tomada como permanente (ver [`docs/roadmap.md`](./docs/ro
 Toda decisão de arquitetura tem um ADR em
 [`docs/decisions/`](./docs/decisions) explicando contexto, alternativas e
 consequências — o projeto é pensado para ser *lido*, não só usado.
+Iniciativas em andamento (fechamento de gaps, com critério de aceite)
+vivem em [`docs/specs/`](./docs/specs/README.md).
 
 ## Arquitetura em uma tela
 
@@ -130,8 +132,11 @@ O `render={<Button variant="outline" />}` é o render prop do Base UI
 npm install
 npm run tokens          # regenera src/tokens.css a partir de tokens/*.json
 npm run check-manifest  # valida baseline.manifest.json contra src/ e tokens/
-npm run build           # tokens + check-manifest + tsup → dist/
+npm run check-contrast  # valida contraste WCAG dos tokens semânticos
+npm run build           # tokens + check-contrast + check-manifest + tsup → dist/
 npm run typecheck
+npm run test             # Vitest + Testing Library + jest-axe
+npm run test:coverage
 ```
 
 Componente novo = **três entregas**: TSX + CSS (só tokens) + entrada no
