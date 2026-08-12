@@ -28,7 +28,7 @@
     "check-manifest": "node scripts/check-manifest.mjs",
     "check-contrast": "node scripts/check-contrast.mjs",
     "build": "npm run tokens && npm run check-contrast && npm run check-manifest && tsup",
-    "prepare": "npm run build",
+    "prepare": "node scripts/prepare.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -59,8 +59,10 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.10.0",
+    "husky": "^9.1.7",
     "jest-axe": "^11.0.0",
     "jsdom": "^30.0.1",
+    "lint-staged": "^17.3.0",
     "prettier": "^3.9.6",
     "react": "^19",
     "react-dom": "^19",
@@ -68,5 +70,13 @@
     "typescript": "^5",
     "typescript-eslint": "^8.67.0",
     "vitest": "^4.1.10"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs}": [
+      "eslint --fix"
+    ],
+    "*.{ts,tsx,js,mjs,css,json,md}": [
+      "prettier --write"
+    ]
   }
 }
