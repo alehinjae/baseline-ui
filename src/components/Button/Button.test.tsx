@@ -9,7 +9,7 @@ describe('Button', () => {
     const onClick = vi.fn()
     render(<Button onClick={onClick}>Salvar</Button>)
     await userEvent.click(screen.getByRole('button', { name: 'Salvar' }))
-    expect(onClick).toHaveBeenCalledOnce()
+    expect(onClick).toHaveBeenCalledTimes(99)
   })
 
   it('aplica variant e size como data-attributes', () => {
