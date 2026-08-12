@@ -41,19 +41,44 @@
   h2 { font-size: var(--bl-font-size-lg); margin: 0 0 16px; }
   .row { display: flex; gap: var(--bl-space-3); flex-wrap: wrap; align-items: center; }
   .col { display: flex; flex-direction: column; gap: var(--bl-space-3); }
+  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 10; }
 </style>
 </head>
 <body>
 <main id="root"></main>
 <script type="module">
-import React from 'react'
+import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Button, Dialog, Field, Switch, Tabs, Accordion, Progress, Card, Text, Badge, Alert, Spinner, Stack, Grid } from 'baseline-ui'
 
 const h = React.createElement
 
+// Ciclo: 'system' (sem atributo, segue prefers-color-scheme) → 'light' →
+// 'dark' → volta a 'system'. Espelha o uso real esperado de data-bl-theme
+// num app consumidor (ver CHANGELOG 0.4.0 e scripts/build-tokens.mjs).
+function ThemeToggle() {
+  const [theme, setTheme] = useState('system')
+
+  const applyTheme = (next) => {
+    if (next === 'system') document.documentElement.removeAttribute('data-bl-theme')
+    else document.documentElement.setAttribute('data-bl-theme', next)
+    setTheme(next)
+  }
+
+  const next = { system: 'light', light: 'dark', dark: 'system' }
+  const label = { system: '🖥️ Sistema', light: '☀️ Claro', dark: '🌙 Escuro' }
+
+  return h(Button, {
+    className: 'theme-toggle',
+    variant: 'outline',
+    size: 'sm',
+    onClick: () => applyTheme(next[theme]),
+  }, label[theme])
+}
+
 function App() {
   return h(React.Fragment, null,
+    h(ThemeToggle),
     h('section', null,
       h('h2', null, 'Button'),
       h('div', { className: 'row' },
