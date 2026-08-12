@@ -73,5 +73,5 @@ padrão dissecado for novo.
 - Repositório público ou privado? → fase 4
 - Registro npm privado? → fase 4
 - Camada generativa (estilo openui) por cima? → deliberadamente fora do
-  escopo; se um dia entrar, é *outra* camada consumindo o manifest, não
+  escopo; se um dia entrar, é _outra_ camada consumindo o manifest, não
   parte da biblioteca.

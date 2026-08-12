@@ -29,7 +29,7 @@ pre-commit — zero portão automatizado além do que já roda dentro de
 
 - **Não é "zerar todo warning do ESLint hoje"** — introduzir lint numa
   base que nunca teve vai revelar uma cauda longa de violações
-  pré-existentes. Critério de aceite é CI verde nos arquivos *como estão*
+  pré-existentes. Critério de aceite é CI verde nos arquivos _como estão_
   (baseline de warning, não de erro, pro código já existente); severo só
   no que for tocado a partir de agora. Limpeza de código pré-existente
   pertence às specs 0003/0004, que já vão tocar esses arquivos por outro

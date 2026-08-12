@@ -29,13 +29,13 @@ Template em [`_template/`](./_template/).
 
 ## Specs ativas
 
-| # | Nome | Status | Cobre |
-|---|---|---|---|
-| [0001](./0001-tooling-foundation/spec.md) | tooling-foundation | draft | CI/CD, ESLint, Prettier, Husky |
-| [0002](./0002-accessibility-contract-completion/spec.md) | accessibility-contract-completion | draft | Área de toque do Switch (44×44), teste de regressão de `prefers-reduced-motion` |
-| [0003](./0003-generated-documentation/spec.md) | generated-documentation | draft | Docs geradas do manifest, `AGENTS.md`, `llms.txt`, `CONTRIBUTING.md` |
-| [0004](./0004-token-and-type-contract-hygiene/spec.md) | token-and-type-contract-hygiene | draft | Tipos `*Props` nomeados, union types, limpeza de tokens hardcoded |
-| [0005](./0005-baseline-ui-mcp/spec.md) | baseline-ui-mcp | draft | Servidor MCP expondo manifest + tokens + garantias |
+| #                                                        | Nome                              | Status | Cobre                                                                           |
+| -------------------------------------------------------- | --------------------------------- | ------ | ------------------------------------------------------------------------------- |
+| [0001](./0001-tooling-foundation/spec.md)                | tooling-foundation                | draft  | CI/CD, ESLint, Prettier, Husky                                                  |
+| [0002](./0002-accessibility-contract-completion/spec.md) | accessibility-contract-completion | draft  | Área de toque do Switch (44×44), teste de regressão de `prefers-reduced-motion` |
+| [0003](./0003-generated-documentation/spec.md)           | generated-documentation           | draft  | Docs geradas do manifest, `AGENTS.md`, `llms.txt`, `CONTRIBUTING.md`            |
+| [0004](./0004-token-and-type-contract-hygiene/spec.md)   | token-and-type-contract-hygiene   | draft  | Tipos `*Props` nomeados, union types, limpeza de tokens hardcoded               |
+| [0005](./0005-baseline-ui-mcp/spec.md)                   | baseline-ui-mcp                   | draft  | Servidor MCP expondo manifest + tokens + garantias                              |
 
 Ordem de execução: 0001 → 0002 → 0003 → 0004 → 0005 — cada `spec.md`
 explica o porquê da posição na fila na própria seção "Por que essa

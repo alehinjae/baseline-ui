@@ -21,14 +21,14 @@ UI contra Radix **Primitives**, que é a alternativa real.
 
 ## Os números (levantados nesta conversa, verificados, não de memória)
 
-| | Radix Primitives | Base UI |
-|---|---|---|
-| Lançamento | 2022 | v1.0 estável em dezembro/2025 |
-| Mantenedor | WorkOS (comprou o projeto) | MUI (Material UI — 95 mil+ estrelas GitHub, 5,8 milhões de downloads/semana do próprio MUI) |
-| Ritmo de manutenção | Desacelerou em vários componentes desde a aquisição | Investimento ativo — parte de quem construiu o Radix original migrou pra lá |
-| Componentes | 30+ | 35 |
-| Adoção histórica | Enorme — `@radix-ui/react-slot` sozinho: ~131 milhões de downloads/semana | shadcn/ui trocou o padrão pra Base UI em projetos novos desde julho/2026 |
-| Empacotamento hoje | Pacote unificado `radix-ui` v1.6.7, MIT, reexportando ~20 sub-pacotes (`@radix-ui/react-dialog`, `@radix-ui/react-tabs`...) | Pacote unificado `@base-ui/react` v1.6.0, MIT, 40 famílias de componentes |
+|                     | Radix Primitives                                                                                                            | Base UI                                                                                     |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Lançamento          | 2022                                                                                                                        | v1.0 estável em dezembro/2025                                                               |
+| Mantenedor          | WorkOS (comprou o projeto)                                                                                                  | MUI (Material UI — 95 mil+ estrelas GitHub, 5,8 milhões de downloads/semana do próprio MUI) |
+| Ritmo de manutenção | Desacelerou em vários componentes desde a aquisição                                                                         | Investimento ativo — parte de quem construiu o Radix original migrou pra lá                 |
+| Componentes         | 30+                                                                                                                         | 35                                                                                          |
+| Adoção histórica    | Enorme — `@radix-ui/react-slot` sozinho: ~131 milhões de downloads/semana                                                   | shadcn/ui trocou o padrão pra Base UI em projetos novos desde julho/2026                    |
+| Empacotamento hoje  | Pacote unificado `radix-ui` v1.6.7, MIT, reexportando ~20 sub-pacotes (`@radix-ui/react-dialog`, `@radix-ui/react-tabs`...) | Pacote unificado `@base-ui/react` v1.6.0, MIT, 40 famílias de componentes                   |
 
 Verificação direta no pacote já instalado (`node_modules/@base-ui/react`,
 16MB):

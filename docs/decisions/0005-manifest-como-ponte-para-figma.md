@@ -8,7 +8,7 @@ Os tokens W3C (ADR 0004) resolvem metade da ponte com o Figma: viram
 Variables. A outra metade são os **componentes** — e aí não existe formato
 padrão. O código TSX/CSS contém tudo (variantes, partes, estados, tokens
 usados), mas espalhado e no formato errado: uma ferramenta que fosse gerar
-a biblioteca no Figma teria que *interpretar* código React, o que é frágil
+a biblioteca no Figma teria que _interpretar_ código React, o que é frágil
 e caro.
 
 ## Decisão
@@ -20,7 +20,7 @@ forma declarativa:
 - **parts** — cada parte, se ela é estilizada pelo baseline-ui ou
   reexportada pura do Base UI, e sua classe CSS;
 - **props** — variantes com valores, default e o data-attribute que as
-  carrega (ADR 0003). Mapeiam 1:1 para *component properties* de variante
+  carrega (ADR 0003). Mapeiam 1:1 para _component properties_ de variante
   no Figma;
 - **states** — os estados interativos que o CSS seleciona (`hover`,
   `focus-visible`, `data-checked`...). Viram as variantes de estado dos

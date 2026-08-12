@@ -15,7 +15,11 @@ describe('Stack', () => {
   })
 
   it('aplica direction/align/justify/wrap só quando fornecidos', () => {
-    render(<Stack direction="row" align="center" justify="between" wrap data-testid="s">conteúdo</Stack>)
+    render(
+      <Stack direction="row" align="center" justify="between" wrap data-testid="s">
+        conteúdo
+      </Stack>,
+    )
     const s = screen.getByTestId('s')
     expect(s).toHaveAttribute('data-bl-direction', 'row')
     expect(s).toHaveAttribute('data-bl-align', 'center')
@@ -24,7 +28,11 @@ describe('Stack', () => {
   })
 
   it('gap 0 é aplicado explicitamente (não confundido com "sem gap definido")', () => {
-    render(<Stack gap={0} data-testid="s">conteúdo</Stack>)
+    render(
+      <Stack gap={0} data-testid="s">
+        conteúdo
+      </Stack>,
+    )
     expect(screen.getByTestId('s')).toHaveAttribute('data-bl-gap', '0')
   })
 

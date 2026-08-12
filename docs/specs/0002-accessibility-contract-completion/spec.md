@@ -28,7 +28,7 @@ verdade hoje — a frase é só ~90% verdadeira até esta spec fechar.
   hit-box, mantendo o trilho visual proporcional — decisão de design de
   como fazer isso fica pro `plan.md`).
 - Teste automatizado (Vitest) garantindo que `prefers-reduced-motion:
-  reduce` zera duração de transição/animação em pelo menos um componente
+reduce` zera duração de transição/animação em pelo menos um componente
   representativo de cada categoria (um com transição de hover — Button;
   um com transição de estado — Switch/Dialog).
 - `docs/positioning.md` escrito (ou atualizado, se já existir por outra

@@ -29,7 +29,10 @@ export function Title({ children, ...props }: React.ComponentProps<typeof BaseDi
   )
 }
 
-export function Description({ children, ...props }: React.ComponentProps<typeof BaseDialog.Description>) {
+export function Description({
+  children,
+  ...props
+}: React.ComponentProps<typeof BaseDialog.Description>) {
   return (
     <BaseDialog.Description className="bl-dialog-description" {...props}>
       {children}

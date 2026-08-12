@@ -42,23 +42,23 @@ mudar e quebrar um par, o build falha, igual às regras de duas camadas
 
 ## Razões medidas (saída do verificador em 2026-07-11)
 
-| par | light | dark | mínimo |
-|---|---|---|---|
-| text / bg | 14.89 | 16.12 | 4.5 |
-| text / bg-subtle | 13.55 | 13.55 | 4.5 |
-| text-muted / bg | 7.73 | 6.91 | 4.5 |
-| text-muted / bg-subtle | 7.03 | 5.81 | 4.5 |
-| accent-text / accent | 14.89 | 16.12 | 4.5 |
-| danger-text / danger | 4.83 | 7.19 | 4.5 |
-| danger / bg | 4.83 | 6.40 | 4.5 |
-| border-strong / bg | 4.83 | 3.67 | 3.0 |
-| accent / bg (foco) | 14.89 | 16.12 | 3.0 |
+| par                    | light | dark  | mínimo |
+| ---------------------- | ----- | ----- | ------ |
+| text / bg              | 14.89 | 16.12 | 4.5    |
+| text / bg-subtle       | 13.55 | 13.55 | 4.5    |
+| text-muted / bg        | 7.73  | 6.91  | 4.5    |
+| text-muted / bg-subtle | 7.03  | 5.81  | 4.5    |
+| accent-text / accent   | 14.89 | 16.12 | 4.5    |
+| danger-text / danger   | 4.83  | 7.19  | 4.5    |
+| danger / bg            | 4.83  | 6.40  | 4.5    |
+| border-strong / bg     | 4.83  | 3.67  | 3.0    |
+| accent / bg (foco)     | 14.89 | 16.12 | 3.0    |
 
 ## Consequências
 
 - Par de cor novo em componente ⇒ declarar em `check-contrast.mjs` junto
   com o mínimo aplicável; o build passa a proteger o par para sempre.
-- `border` decorativa fica deliberadamente fora do verificador — ela *deve*
+- `border` decorativa fica deliberadamente fora do verificador — ela _deve_
   poder ser sutil.
 - No Figma, `border-strong` é só mais uma Variable na coleção Semantic —
   nenhuma mudança estrutural na ponte.

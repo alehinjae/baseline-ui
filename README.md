@@ -8,7 +8,7 @@ cada decisão agora é tomada como permanente (ver [`docs/roadmap.md`](./docs/ro
 
 Toda decisão de arquitetura tem um ADR em
 [`docs/decisions/`](./docs/decisions) explicando contexto, alternativas e
-consequências — o projeto é pensado para ser *lido*, não só usado.
+consequências — o projeto é pensado para ser _lido_, não só usado.
 Iniciativas em andamento (fechamento de gaps, com critério de aceite)
 vivem em [`docs/specs/`](./docs/specs/README.md).
 

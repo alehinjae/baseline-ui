@@ -17,10 +17,11 @@ cobrir todo o vocabulário genérico de UI que o app usa.
 Spinner, Stack e Grid não têm Base UI por baixo — não há comportamento
 (foco, teclado, ARIA composto) que justifique um motor headless num cartão
 ou numa pilha de layout. São tokens + CSS. O critério continua o do ADR
-0001: *usa-se o Base UI onde há comportamento a herdar* (Tabs, Accordion e
+0001: _usa-se o Base UI onde há comportamento a herdar_ (Tabs, Accordion e
 Progress, também desta fase, vêm dele).
 
 **2. Matizes de status vs. decorativos, com nomes distintos de propósito.**
+
 - `info/success/warning/danger-soft-*` — nomes SEMÂNTICOS, para status do
   sistema (Alert, Progress). Cada trio bg/text/border tem contraste AA
   verificado no build.

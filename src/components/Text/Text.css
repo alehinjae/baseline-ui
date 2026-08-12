@@ -23,8 +23,12 @@
   font-weight: var(--bl-font-weight-semibold);
 }
 
-.bl-text[data-bl-variant='body-lg'] { font-size: var(--bl-font-size-lg); }
-.bl-text[data-bl-variant='body-md'] { font-size: var(--bl-font-size-md); }
+.bl-text[data-bl-variant='body-lg'] {
+  font-size: var(--bl-font-size-lg);
+}
+.bl-text[data-bl-variant='body-md'] {
+  font-size: var(--bl-font-size-md);
+}
 .bl-text[data-bl-variant='body-sm'] {
   font-size: var(--bl-font-size-xs);
   font-weight: var(--bl-font-weight-medium);

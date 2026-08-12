@@ -15,15 +15,20 @@ CSS inteiro.
 O estado vira **atributo do próprio elemento DOM**, não classe:
 
 ```html
-<div data-open>...</div>          <!-- Dialog.Popup aberto -->
-<button data-checked>...</button>  <!-- Switch marcado -->
-<span data-disabled>...</span>     <!-- Button desabilitado -->
+<div data-open>...</div>
+<!-- Dialog.Popup aberto -->
+<button data-checked>...</button>
+<!-- Switch marcado -->
+<span data-disabled>...</span>
+<!-- Button desabilitado -->
 ```
 
 CSS puro já sabe selecionar isso, sem nenhuma API da biblioteca:
 
 ```css
-.bl-dialog-popup[data-open] { animation: scaleIn 200ms; }
+.bl-dialog-popup[data-open] {
+  animation: scaleIn 200ms;
+}
 ```
 
 Isso também cobre **transições de entrada/saída** de forma elegante, via

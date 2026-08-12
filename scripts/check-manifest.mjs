@@ -21,10 +21,12 @@ const exported = [...indexSrc.matchAll(/export (?:\{ (\w+) \}|\* as (\w+)) from/
   .filter((name) => /^[A-Z]/.test(name)) // só componentes, não tipos
 const manifestNames = Object.keys(manifest.components)
 for (const name of manifestNames) {
-  if (!exported.includes(name)) errors.push(`'${name}' está no manifest mas não é exportado em src/index.ts`)
+  if (!exported.includes(name))
+    errors.push(`'${name}' está no manifest mas não é exportado em src/index.ts`)
 }
 for (const name of exported) {
-  if (!manifestNames.includes(name)) errors.push(`'${name}' é exportado em src/index.ts mas não está no manifest`)
+  if (!manifestNames.includes(name))
+    errors.push(`'${name}' é exportado em src/index.ts mas não está no manifest`)
 }
 
 // 2 — tokens referenciados existem na fonte W3C
@@ -49,9 +51,12 @@ for (const [name, comp] of Object.entries(manifest.components)) {
   const css = read(`src/components/${name}/${name}.css`)
   const classes = comp.cssClass
     ? [comp.cssClass]
-    : Object.values(comp.parts ?? {}).map((p) => p.cssClass).filter(Boolean)
+    : Object.values(comp.parts ?? {})
+        .map((p) => p.cssClass)
+        .filter(Boolean)
   for (const cls of classes) {
-    if (!css.includes(`.${cls}`)) errors.push(`'${name}' declara cssClass '${cls}' que não aparece em ${name}.css`)
+    if (!css.includes(`.${cls}`))
+      errors.push(`'${name}' declara cssClass '${cls}' que não aparece em ${name}.css`)
   }
 }
 

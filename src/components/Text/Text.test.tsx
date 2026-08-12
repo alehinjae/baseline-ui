@@ -15,7 +15,11 @@ describe('Text', () => {
   })
 
   it('prop `as` separa visual de semântica: variante h1 pode renderizar <span>', () => {
-    render(<Text variant="h1" as="span">Visual grande, sem heading</Text>)
+    render(
+      <Text variant="h1" as="span">
+        Visual grande, sem heading
+      </Text>,
+    )
     const el = screen.getByText('Visual grande, sem heading')
     expect(el.tagName).toBe('SPAN')
     expect(el).toHaveAttribute('data-bl-variant', 'h1')
