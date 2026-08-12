@@ -22,7 +22,9 @@
       existir), testado isolado fora de qualquer repositório git
 - [x] Criar `.github/workflows/ci.yml` — `npm ci`, build, typecheck,
       test, lint, format:check em push/PR pra main
-- [ ] Verificar os 6 critérios de aceite do `spec.md` (em andamento —
-      falta o critério de CI real rodando verde no PR)
-- [ ] Commit(s), push da branch `specs/0001-tooling-foundation`, abrir PR
-- [ ] Confirmar CI verde no PR real (não só leitura do YAML)
+- [x] Verificar os 6 critérios de aceite do `spec.md`
+- [x] Commit(s), push da branch `specs/0001-tooling-foundation`, abrir PR
+      ([#2](https://github.com/alehinjae/baseline-ui/pull/2))
+- [x] Confirmar CI verde no PR real — provado nos dois sentidos: falha
+      de propósito com teste quebrado (commit `496e870`), depois volta a
+      passar após revert (`e4de8de`)
