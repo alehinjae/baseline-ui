@@ -5,7 +5,11 @@ import { Card } from './Card'
 
 describe('Card', () => {
   it('aplica padding e interactive como data-attributes', () => {
-    render(<Card padding="lg" interactive data-testid="card">conteúdo</Card>)
+    render(
+      <Card padding="lg" interactive data-testid="card">
+        conteúdo
+      </Card>,
+    )
     const card = screen.getByTestId('card')
     expect(card).toHaveAttribute('data-bl-padding', 'lg')
     expect(card).toHaveAttribute('data-bl-interactive', '')

@@ -1,14 +1,8 @@
 {
   "projectPath": "G:/Dev/baseline-ui",
   "outputPath": "./audit",
-  "includePatterns": [
-    "**/*.{js,jsx,ts,tsx,css,scss,json,md}"
-  ],
-  "excludePatterns": [
-    "**/node_modules/**",
-    "**/dist/**",
-    "**/build/**"
-  ],
+  "includePatterns": ["**/*.{js,jsx,ts,tsx,css,scss,json,md}"],
+  "excludePatterns": ["**/node_modules/**", "**/dist/**", "**/build/**"],
   "modules": {
     "components": true,
     "tokens": true,

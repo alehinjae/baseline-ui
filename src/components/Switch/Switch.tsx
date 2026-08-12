@@ -7,10 +7,16 @@ import type { ComponentProps } from 'react'
 // thumb sem nenhum seletor de descendente dependente de JS.
 type WithClass<P> = Omit<P, 'className'> & { className?: string }
 
-export function Root({ className = '', ...props }: WithClass<ComponentProps<typeof BaseSwitch.Root>>) {
+export function Root({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseSwitch.Root>>) {
   return <BaseSwitch.Root className={`bl-switch ${className}`.trim()} {...props} />
 }
 
-export function Thumb({ className = '', ...props }: WithClass<ComponentProps<typeof BaseSwitch.Thumb>>) {
+export function Thumb({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseSwitch.Thumb>>) {
   return <BaseSwitch.Thumb className={`bl-switch-thumb ${className}`.trim()} {...props} />
 }

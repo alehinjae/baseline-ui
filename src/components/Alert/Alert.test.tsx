@@ -10,7 +10,11 @@ describe('Alert', () => {
   })
 
   it('renderiza title quando fornecido', () => {
-    render(<Alert variant="success" title="Sucesso">Ação concluída.</Alert>)
+    render(
+      <Alert variant="success" title="Sucesso">
+        Ação concluída.
+      </Alert>,
+    )
     expect(screen.getByText('Sucesso')).toBeInTheDocument()
   })
 
@@ -21,7 +25,11 @@ describe('Alert', () => {
   })
 
   it('não tem violações de acessibilidade', async () => {
-    const { container } = render(<Alert variant="warning" title="Atenção">Revise antes de continuar.</Alert>)
+    const { container } = render(
+      <Alert variant="warning" title="Atenção">
+        Revise antes de continuar.
+      </Alert>,
+    )
     await expectNoA11yViolations(container)
   })
 })

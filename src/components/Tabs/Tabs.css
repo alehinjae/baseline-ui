@@ -24,7 +24,9 @@
   padding: var(--bl-space-1) var(--bl-space-3);
   border-radius: var(--bl-radius-sm);
   cursor: pointer;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
 }
 
 .bl-tabs-tab:hover:not([data-active]) {

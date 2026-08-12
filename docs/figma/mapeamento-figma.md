@@ -2,20 +2,20 @@
 
 Este documento define **como** cada conceito do baseline-ui vira um conceito
 do Figma quando a ponte for executada (fase 3 do roadmap). A regra geral:
-código é a fonte, Figma é uma *saída* — igual ao CSS.
+código é a fonte, Figma é uma _saída_ — igual ao CSS.
 
 ## Tokens → Variables
 
-| baseline-ui | Figma |
-|---|---|
-| `tokens/primitives.json` | Coleção **Primitives**, modo único |
-| `tokens/semantic.light.json` + `semantic.dark.json` | Coleção **Semantic**, modos **Light** e **Dark** |
-| alias `{color.zinc.900}` | Variable alias apontando para a Variable de Primitives |
-| `$type: color` | Variable de cor |
-| `$type: dimension` (space, radius, font-size) | Variable numérica (px) |
-| `$type: fontWeight` | Variable numérica |
-| `$type: fontFamily` | Sem Variable nativa — vira Text Style |
-| `$type: shadow` | Sem Variable nativa — vira Effect Style |
+| baseline-ui                                         | Figma                                                  |
+| --------------------------------------------------- | ------------------------------------------------------ |
+| `tokens/primitives.json`                            | Coleção **Primitives**, modo único                     |
+| `tokens/semantic.light.json` + `semantic.dark.json` | Coleção **Semantic**, modos **Light** e **Dark**       |
+| alias `{color.zinc.900}`                            | Variable alias apontando para a Variable de Primitives |
+| `$type: color`                                      | Variable de cor                                        |
+| `$type: dimension` (space, radius, font-size)       | Variable numérica (px)                                 |
+| `$type: fontWeight`                                 | Variable numérica                                      |
+| `$type: fontFamily`                                 | Sem Variable nativa — vira Text Style                  |
+| `$type: shadow`                                     | Sem Variable nativa — vira Effect Style                |
 
 Nomes: caminho do token com `/` como separador de grupo — `color.zinc.900`
 → `color/zinc/900`. Isso agrupa visualmente no painel de Variables do Figma
@@ -27,14 +27,14 @@ bruto, sempre alias. Mudar o tema inteiro = trocar aliases num modo só.
 
 ## Manifest → Componentes
 
-| baseline.manifest.json | Figma |
-|---|---|
-| componente `kind: single` | Component set com properties de variante |
-| `props.variant.values` × `props.size.values` | Variantes do component set (ex.: Button = 4×3 = 12, × estados) |
-| `states` | Property adicional `state` (default, hover, focus, disabled...) |
-| componente `kind: compound` | Um componente por parte estilizada (`Dialog/Popup`, `Field/Control`...), compostos num exemplo montado |
-| `parts[].styled: false` | Não vira nada no Figma — é só lógica |
-| `tokens` do componente | Cada fill/stroke/radius/text do componente Figma ligado à Variable correspondente, nunca valor solto |
+| baseline.manifest.json                       | Figma                                                                                                  |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| componente `kind: single`                    | Component set com properties de variante                                                               |
+| `props.variant.values` × `props.size.values` | Variantes do component set (ex.: Button = 4×3 = 12, × estados)                                         |
+| `states`                                     | Property adicional `state` (default, hover, focus, disabled...)                                        |
+| componente `kind: compound`                  | Um componente por parte estilizada (`Dialog/Popup`, `Field/Control`...), compostos num exemplo montado |
+| `parts[].styled: false`                      | Não vira nada no Figma — é só lógica                                                                   |
+| `tokens` do componente                       | Cada fill/stroke/radius/text do componente Figma ligado à Variable correspondente, nunca valor solto   |
 
 ## Como a ponte executa (fase 3)
 

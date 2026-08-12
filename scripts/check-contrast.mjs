@@ -55,26 +55,86 @@ function ratio(hexA, hexB) {
 // Os pares exigidos. fg/bg são caminhos semânticos; valem para os dois modos.
 const requirements = [
   { fg: 'color.text', bg: 'color.bg', min: 4.5, context: 'texto principal' },
-  { fg: 'color.text', bg: 'color.bg-subtle', min: 4.5, context: 'texto sobre superfície sutil (hover de botão ghost/outline)' },
+  {
+    fg: 'color.text',
+    bg: 'color.bg-subtle',
+    min: 4.5,
+    context: 'texto sobre superfície sutil (hover de botão ghost/outline)',
+  },
   { fg: 'color.text-muted', bg: 'color.bg', min: 4.5, context: 'texto secundário (descrições)' },
-  { fg: 'color.text-muted', bg: 'color.bg-subtle', min: 4.5, context: 'texto secundário sobre superfície sutil' },
+  {
+    fg: 'color.text-muted',
+    bg: 'color.bg-subtle',
+    min: 4.5,
+    context: 'texto secundário sobre superfície sutil',
+  },
   { fg: 'color.accent-text', bg: 'color.accent', min: 4.5, context: 'texto do botão solid' },
   { fg: 'color.danger-text', bg: 'color.danger', min: 4.5, context: 'texto do botão danger' },
   { fg: 'color.danger', bg: 'color.bg', min: 4.5, context: 'mensagem de erro do Field' },
-  { fg: 'color.border-strong', bg: 'color.bg', min: 3.0, context: 'borda de input / trilho de switch (1.4.11)' },
+  {
+    fg: 'color.border-strong',
+    bg: 'color.bg',
+    min: 3.0,
+    context: 'borda de input / trilho de switch (1.4.11)',
+  },
   { fg: 'color.accent', bg: 'color.bg', min: 3.0, context: 'anel de foco (1.4.11)' },
   // fase 2 (ADR 0007) — status e matizes decorativos: texto sobre fundo suave
   { fg: 'color.info-soft-text', bg: 'color.info-soft-bg', min: 4.5, context: 'Alert/Badge info' },
-  { fg: 'color.success-soft-text', bg: 'color.success-soft-bg', min: 4.5, context: 'Alert/Badge success' },
-  { fg: 'color.warning-soft-text', bg: 'color.warning-soft-bg', min: 4.5, context: 'Alert/Badge warning' },
-  { fg: 'color.danger-soft-text', bg: 'color.danger-soft-bg', min: 4.5, context: 'Alert/Badge danger' },
-  { fg: 'color.purple-soft-text', bg: 'color.purple-soft-bg', min: 4.5, context: 'Badge purple (categoria)' },
-  { fg: 'color.pink-soft-text', bg: 'color.pink-soft-bg', min: 4.5, context: 'Badge pink (categoria)' },
+  {
+    fg: 'color.success-soft-text',
+    bg: 'color.success-soft-bg',
+    min: 4.5,
+    context: 'Alert/Badge success',
+  },
+  {
+    fg: 'color.warning-soft-text',
+    bg: 'color.warning-soft-bg',
+    min: 4.5,
+    context: 'Alert/Badge warning',
+  },
+  {
+    fg: 'color.danger-soft-text',
+    bg: 'color.danger-soft-bg',
+    min: 4.5,
+    context: 'Alert/Badge danger',
+  },
+  {
+    fg: 'color.purple-soft-text',
+    bg: 'color.purple-soft-bg',
+    min: 4.5,
+    context: 'Badge purple (categoria)',
+  },
+  {
+    fg: 'color.pink-soft-text',
+    bg: 'color.pink-soft-bg',
+    min: 4.5,
+    context: 'Badge pink (categoria)',
+  },
   // preenchimentos do Progress sobre o trilho (bg-subtle) — non-text, 1.4.11
-  { fg: 'color.info-solid', bg: 'color.bg-subtle', min: 3.0, context: 'Progress info sobre o trilho' },
-  { fg: 'color.success-solid', bg: 'color.bg-subtle', min: 3.0, context: 'Progress success sobre o trilho' },
-  { fg: 'color.warning-solid', bg: 'color.bg-subtle', min: 3.0, context: 'Progress warning sobre o trilho' },
-  { fg: 'color.accent', bg: 'color.bg-subtle', min: 3.0, context: 'Progress default sobre o trilho' },
+  {
+    fg: 'color.info-solid',
+    bg: 'color.bg-subtle',
+    min: 3.0,
+    context: 'Progress info sobre o trilho',
+  },
+  {
+    fg: 'color.success-solid',
+    bg: 'color.bg-subtle',
+    min: 3.0,
+    context: 'Progress success sobre o trilho',
+  },
+  {
+    fg: 'color.warning-solid',
+    bg: 'color.bg-subtle',
+    min: 3.0,
+    context: 'Progress warning sobre o trilho',
+  },
+  {
+    fg: 'color.accent',
+    bg: 'color.bg-subtle',
+    min: 3.0,
+    context: 'Progress default sobre o trilho',
+  },
 ]
 
 let failed = false
@@ -87,7 +147,7 @@ for (const mode of Object.keys(modes)) {
     if (!ok) failed = true
     console.log(
       `  ${ok ? 'ok  ' : 'FAIL'} ${r.toFixed(2).padStart(5)}:1 (min ${req.min}) ` +
-      `${req.fg} sobre ${req.bg} — ${req.context}`,
+        `${req.fg} sobre ${req.bg} — ${req.context}`,
     )
   }
 }

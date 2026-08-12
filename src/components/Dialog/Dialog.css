@@ -24,7 +24,9 @@
   box-shadow: var(--bl-shadow-popup);
   padding: var(--bl-space-5);
   font-family: var(--bl-font-sans);
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 .bl-dialog-popup[data-starting-style],
 .bl-dialog-popup[data-ending-style] {

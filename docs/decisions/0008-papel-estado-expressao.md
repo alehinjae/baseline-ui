@@ -21,16 +21,16 @@ código existente, e formaliza como princípio — não é uma reescrita.
 
 ## O mapeamento (já era verdade, agora tem nome)
 
-| Camada líquida | No baseline-ui, hoje |
-|---|---|
-| **Papel** — o que o objeto É | Comportamento do Base UI (ADR 0001): semântica ARIA, foco, teclado. Imutável — o baseline-ui nunca reimplementa isso. |
-| **Estado** — onde o objeto ESTÁ | `data-attributes` do próprio Base UI (`data-open`, `data-checked`...) e do baseline-ui (`data-bl-variant`...) — ADR 0003. |
-| **Expressão** — como o objeto APARECE | Tokens + CSS (ADR 0004). Totalmente livre — é o que muda entre tema white, um tema futuro, ou qualquer marca. |
+| Camada líquida                        | No baseline-ui, hoje                                                                                                      |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Papel** — o que o objeto É          | Comportamento do Base UI (ADR 0001): semântica ARIA, foco, teclado. Imutável — o baseline-ui nunca reimplementa isso.     |
+| **Estado** — onde o objeto ESTÁ       | `data-attributes` do próprio Base UI (`data-open`, `data-checked`...) e do baseline-ui (`data-bl-variant`...) — ADR 0003. |
+| **Expressão** — como o objeto APARECE | Tokens + CSS (ADR 0004). Totalmente livre — é o que muda entre tema white, um tema futuro, ou qualquer marca.             |
 
 **Regra de precedência**: em conflito, a camada de cima vence. Uma
 expressão nunca pode fazer o componente deixar de cumprir seu papel ou
-mentir sobre seu estado — ex.: um botão nunca pode *parecer* focável sem
-*estar* focável.
+mentir sobre seu estado — ex.: um botão nunca pode _parecer_ focável sem
+_estar_ focável.
 
 ## Decisão: garantias viram checagem, não só documentação
 

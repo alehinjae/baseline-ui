@@ -1,0 +1,6 @@
+dist/
+coverage/
+audit/
+node_modules/
+src/tokens.css
+package-lock.json

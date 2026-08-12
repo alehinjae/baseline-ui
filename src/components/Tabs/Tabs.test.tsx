@@ -10,7 +10,9 @@ function Example() {
       <Tabs.List>
         <Tabs.Tab value="a">Visão geral</Tabs.Tab>
         <Tabs.Tab value="b">Configurações</Tabs.Tab>
-        <Tabs.Tab value="c" disabled>Desabilitada</Tabs.Tab>
+        <Tabs.Tab value="c" disabled>
+          Desabilitada
+        </Tabs.Tab>
       </Tabs.List>
       <Tabs.Panel value="a">Conteúdo A</Tabs.Panel>
       <Tabs.Panel value="b">Conteúdo B</Tabs.Panel>

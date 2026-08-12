@@ -47,9 +47,7 @@ Menu.Item, só que renderizado como link em vez de `<div>`.
 Também aceita uma **função** quando se precisa do estado do componente:
 
 ```tsx
-<Switch.Thumb render={(props, state) => (
-  <span {...props}>{state.checked ? '✓' : ''}</span>
-)} />
+<Switch.Thumb render={(props, state) => <span {...props}>{state.checked ? '✓' : ''}</span>} />
 ```
 
 Isso resolve um problema real de bibliotecas de componente: como deixar o

@@ -12,7 +12,11 @@ describe('Grid', () => {
   })
 
   it('aplica cols e gap como data-attributes', () => {
-    render(<Grid cols={12} gap={2} data-testid="g">conteúdo</Grid>)
+    render(
+      <Grid cols={12} gap={2} data-testid="g">
+        conteúdo
+      </Grid>,
+    )
     const g = screen.getByTestId('g')
     expect(g).toHaveAttribute('data-bl-cols', '12')
     expect(g).toHaveAttribute('data-bl-gap', '2')

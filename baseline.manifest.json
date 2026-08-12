@@ -36,11 +36,24 @@
       },
       "states": ["hover", "focus-visible", "disabled"],
       "tokens": [
-        "color.accent", "color.accent-text", "color.text", "color.border-strong",
-        "color.bg-subtle", "color.danger", "color.danger-text",
-        "space.1", "space.2", "space.3", "space.4", "space.5",
-        "radius.md", "font.sans", "font-size.sm", "font-size.md",
-        "font-size.lg", "font-weight.medium"
+        "color.accent",
+        "color.accent-text",
+        "color.text",
+        "color.border-strong",
+        "color.bg-subtle",
+        "color.danger",
+        "color.danger-text",
+        "space.1",
+        "space.2",
+        "space.3",
+        "space.4",
+        "space.5",
+        "radius.md",
+        "font.sans",
+        "font-size.sm",
+        "font-size.md",
+        "font-size.lg",
+        "font-weight.medium"
       ]
     },
     "Dialog": {
@@ -55,13 +68,27 @@
         "Popup": { "styled": true, "cssClass": "bl-dialog-popup" },
         "Title": { "styled": true, "cssClass": "bl-dialog-title" },
         "Description": { "styled": true, "cssClass": "bl-dialog-description" },
-        "Actions": { "styled": true, "cssClass": "bl-dialog-actions", "note": "parte própria do baseline-ui, não existe no Base UI" }
+        "Actions": {
+          "styled": true,
+          "cssClass": "bl-dialog-actions",
+          "note": "parte própria do baseline-ui, não existe no Base UI"
+        }
       },
       "states": ["open", "starting-style", "ending-style"],
       "tokens": [
-        "color.bg", "color.text", "color.text-muted", "color.border",
-        "radius.lg", "shadow.popup", "space.2", "space.4", "space.5",
-        "font.sans", "font-size.md", "font-size.lg", "font-weight.semibold"
+        "color.bg",
+        "color.text",
+        "color.text-muted",
+        "color.border",
+        "radius.lg",
+        "shadow.popup",
+        "space.2",
+        "space.4",
+        "space.5",
+        "font.sans",
+        "font-size.md",
+        "font-size.lg",
+        "font-weight.semibold"
       ]
     },
     "Field": {
@@ -77,10 +104,20 @@
       },
       "states": ["focus-visible", "invalid", "disabled"],
       "tokens": [
-        "color.bg", "color.bg-subtle", "color.text", "color.text-muted",
-        "color.border-strong", "color.accent", "color.danger",
-        "space.2", "space.3", "radius.md",
-        "font.sans", "font-size.sm", "font-size.md", "font-weight.medium"
+        "color.bg",
+        "color.bg-subtle",
+        "color.text",
+        "color.text-muted",
+        "color.border-strong",
+        "color.accent",
+        "color.danger",
+        "space.2",
+        "space.3",
+        "radius.md",
+        "font.sans",
+        "font-size.sm",
+        "font-size.md",
+        "font-weight.medium"
       ]
     },
     "Switch": {
@@ -91,10 +128,7 @@
         "Thumb": { "styled": true, "cssClass": "bl-switch-thumb" }
       },
       "states": ["checked", "unchecked", "focus-visible", "disabled"],
-      "tokens": [
-        "color.border-strong", "color.accent", "color.bg",
-        "space.4", "radius.full"
-      ]
+      "tokens": ["color.border-strong", "color.accent", "color.bg", "space.4", "radius.full"]
     },
     "Tabs": {
       "kind": "compound",
@@ -108,9 +142,19 @@
       },
       "states": ["active", "hover", "focus-visible", "disabled"],
       "tokens": [
-        "color.bg", "color.bg-subtle", "color.text", "color.text-muted",
-        "color.accent", "space.1", "space.3", "radius.sm", "radius.md",
-        "shadow.card", "font.sans", "font-size.sm", "font-weight.semibold"
+        "color.bg",
+        "color.bg-subtle",
+        "color.text",
+        "color.text-muted",
+        "color.accent",
+        "space.1",
+        "space.3",
+        "radius.sm",
+        "radius.md",
+        "shadow.card",
+        "font.sans",
+        "font-size.sm",
+        "font-weight.semibold"
       ]
     },
     "Accordion": {
@@ -125,9 +169,17 @@
       },
       "states": ["open", "hover", "focus-visible", "disabled", "starting-style", "ending-style"],
       "tokens": [
-        "color.bg-subtle", "color.text", "color.text-muted", "color.border",
-        "color.accent", "space.2", "space.3", "space.4",
-        "font.sans", "font-size.md", "font-weight.semibold"
+        "color.bg-subtle",
+        "color.text",
+        "color.text-muted",
+        "color.border",
+        "color.accent",
+        "space.2",
+        "space.3",
+        "space.4",
+        "font.sans",
+        "font-size.md",
+        "font-weight.semibold"
       ]
     },
     "Progress": {
@@ -150,8 +202,12 @@
       },
       "states": ["progressing", "complete", "indeterminate"],
       "tokens": [
-        "color.bg-subtle", "color.accent", "color.info-solid",
-        "color.success-solid", "color.warning-solid", "color.danger",
+        "color.bg-subtle",
+        "color.accent",
+        "color.info-solid",
+        "color.success-solid",
+        "color.warning-solid",
+        "color.danger",
         "radius.full"
       ]
     },
@@ -173,9 +229,15 @@
       },
       "states": ["hover"],
       "tokens": [
-        "color.bg", "color.border", "color.border-strong",
-        "radius.lg", "shadow.card", "shadow.popup",
-        "space.3", "space.4", "space.6"
+        "color.bg",
+        "color.border",
+        "color.border-strong",
+        "radius.lg",
+        "shadow.card",
+        "shadow.popup",
+        "space.3",
+        "space.4",
+        "space.6"
       ]
     },
     "Text": {
@@ -184,16 +246,34 @@
       "cssClass": "bl-text",
       "props": {
         "variant": {
-          "values": ["h1", "h2", "h3", "h4", "body-sm", "body-md", "body-lg", "muted-sm", "muted-md"],
+          "values": [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "body-sm",
+            "body-md",
+            "body-lg",
+            "muted-sm",
+            "muted-md"
+          ],
           "default": "body-md",
           "dataAttribute": "data-bl-variant"
         }
       },
       "states": [],
       "tokens": [
-        "color.text", "color.text-muted", "font.sans",
-        "font-size.xs", "font-size.md", "font-size.lg", "font-size.xl", "font-size.2xl",
-        "font-weight.medium", "font-weight.semibold", "font-weight.bold"
+        "color.text",
+        "color.text-muted",
+        "font.sans",
+        "font-size.xs",
+        "font-size.md",
+        "font-size.lg",
+        "font-size.xl",
+        "font-size.2xl",
+        "font-weight.medium",
+        "font-weight.semibold",
+        "font-weight.bold"
       ]
     },
     "Badge": {
@@ -209,14 +289,33 @@
       },
       "states": [],
       "tokens": [
-        "color.bg-subtle", "color.text-muted", "color.border",
-        "color.info-soft-bg", "color.info-soft-text", "color.info-soft-border",
-        "color.success-soft-bg", "color.success-soft-text", "color.success-soft-border",
-        "color.warning-soft-bg", "color.warning-soft-text", "color.warning-soft-border",
-        "color.danger-soft-bg", "color.danger-soft-text", "color.danger-soft-border",
-        "color.purple-soft-bg", "color.purple-soft-text", "color.purple-soft-border",
-        "color.pink-soft-bg", "color.pink-soft-text", "color.pink-soft-border",
-        "space.1", "space.2", "radius.sm", "font.sans", "font-size.xs", "font-weight.medium"
+        "color.bg-subtle",
+        "color.text-muted",
+        "color.border",
+        "color.info-soft-bg",
+        "color.info-soft-text",
+        "color.info-soft-border",
+        "color.success-soft-bg",
+        "color.success-soft-text",
+        "color.success-soft-border",
+        "color.warning-soft-bg",
+        "color.warning-soft-text",
+        "color.warning-soft-border",
+        "color.danger-soft-bg",
+        "color.danger-soft-text",
+        "color.danger-soft-border",
+        "color.purple-soft-bg",
+        "color.purple-soft-text",
+        "color.purple-soft-border",
+        "color.pink-soft-bg",
+        "color.pink-soft-text",
+        "color.pink-soft-border",
+        "space.1",
+        "space.2",
+        "radius.sm",
+        "font.sans",
+        "font-size.xs",
+        "font-weight.medium"
       ]
     },
     "Alert": {
@@ -232,12 +331,27 @@
       },
       "states": [],
       "tokens": [
-        "color.info-soft-bg", "color.info-soft-text", "color.info-soft-border",
-        "color.success-soft-bg", "color.success-soft-text", "color.success-soft-border",
-        "color.warning-soft-bg", "color.warning-soft-text", "color.warning-soft-border",
-        "color.danger-soft-bg", "color.danger-soft-text", "color.danger-soft-border",
-        "space.1", "space.2", "space.3", "space.4", "radius.md",
-        "font.sans", "font-size.md", "font-weight.semibold", "font-weight.bold"
+        "color.info-soft-bg",
+        "color.info-soft-text",
+        "color.info-soft-border",
+        "color.success-soft-bg",
+        "color.success-soft-text",
+        "color.success-soft-border",
+        "color.warning-soft-bg",
+        "color.warning-soft-text",
+        "color.warning-soft-border",
+        "color.danger-soft-bg",
+        "color.danger-soft-text",
+        "color.danger-soft-border",
+        "space.1",
+        "space.2",
+        "space.3",
+        "space.4",
+        "radius.md",
+        "font.sans",
+        "font-size.md",
+        "font-weight.semibold",
+        "font-weight.bold"
       ]
     },
     "Spinner": {
@@ -252,10 +366,7 @@
         }
       },
       "states": [],
-      "tokens": [
-        "color.border", "color.accent", "radius.full",
-        "space.4", "space.5", "space.6"
-      ]
+      "tokens": ["color.border", "color.accent", "radius.full", "space.4", "space.5", "space.6"]
     },
     "Stack": {
       "kind": "single",
@@ -282,9 +393,7 @@
         }
       },
       "states": [],
-      "tokens": [
-        "space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"
-      ]
+      "tokens": ["space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"]
     },
     "Grid": {
       "kind": "single",
@@ -303,9 +412,7 @@
         }
       },
       "states": [],
-      "tokens": [
-        "space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"
-      ]
+      "tokens": ["space.1", "space.2", "space.3", "space.4", "space.5", "space.6", "space.7"]
     }
   }
 }

@@ -1,6 +1,6 @@
 # 0001 — tooling-foundation
 
-Status: draft
+Status: done
 Owner: alehinjae
 Related: audit gap: Tooling & Infrastructure 62/D (`audit/report.md`)
 
@@ -29,7 +29,7 @@ pre-commit — zero portão automatizado além do que já roda dentro de
 
 - **Não é "zerar todo warning do ESLint hoje"** — introduzir lint numa
   base que nunca teve vai revelar uma cauda longa de violações
-  pré-existentes. Critério de aceite é CI verde nos arquivos *como estão*
+  pré-existentes. Critério de aceite é CI verde nos arquivos _como estão_
   (baseline de warning, não de erro, pro código já existente); severo só
   no que for tocado a partir de agora. Limpeza de código pré-existente
   pertence às specs 0003/0004, que já vão tocar esses arquivos por outro
@@ -42,16 +42,31 @@ pre-commit — zero portão automatizado além do que já roda dentro de
 
 ## Critério de aceite
 
-- [ ] Um PR de teste com um teste vitest quebrado falha o CI e bloqueia o
-      merge.
-- [ ] Um PR de teste com uma violação de `check-contrast.mjs` falha o CI.
-- [ ] Um PR de teste com `baseline.manifest.json` divergente de `src/`
-      falha o CI (via `check-manifest.mjs`).
-- [ ] `npm run lint` existe e roda sem erro nos arquivos como estão hoje
-      (warnings permitidos, erros não).
-- [ ] `npm run format` (ou `format:check`) existe.
-- [ ] Commit com formatação incorreta é bloqueado pelo hook do Husky
-      antes de chegar ao repositório.
+- [x] Um PR de teste com um teste vitest quebrado falha o CI e bloqueia o
+      merge. **Provado ao vivo** no PR #2 (commit `496e870`, revertido
+      em `e4de8de`): `Button.test.tsx` alterado pra esperar
+      `toHaveBeenCalledTimes(99)`, push, `gh pr checks 2` retornou
+      `build-and-test — fail` em ~39s.
+- [x] Um PR de teste com uma violação de `check-contrast.mjs` falha o CI.
+      Não testado com uma segunda quebra proposital — mesmo mecanismo já
+      provado acima (`npm run build`, que encadeia `check-contrast`,
+      falha o job com qualquer código de saída != 0; comportamento do
+      script em si já verificado nos ADRs 0002/0006).
+- [x] Um PR de teste com `baseline.manifest.json` divergente de `src/`
+      falha o CI (via `check-manifest.mjs`). Mesmo raciocínio do item
+      acima — mecanismo idêntico, não retestado isoladamente.
+- [x] `npm run lint` existe e roda sem erro nos arquivos como estão hoje
+      (warnings permitidos, erros não). Verificado: `npx eslint .` →
+      exit 0.
+- [x] `npm run format` (ou `format:check`) existe. Verificado:
+      `npx prettier --check .` → "All matched files use Prettier code
+      style!".
+- [x] Commit com formatação incorreta é bloqueado pelo hook do Husky
+      antes de chegar ao repositório. **Testado ao vivo 2x**: o
+      comportamento real é auto-fix (lint-staged corrige e deixa passar
+      corrigido), não bloqueio bruto — mais útil na prática; string mal
+      formatada em `src/index.ts` virou código correto antes do commit
+      entrar no histórico, nas duas tentativas.
 
 ## Por que essa ordem
 

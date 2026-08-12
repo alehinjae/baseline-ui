@@ -8,7 +8,9 @@
    todo elemento estilizado por um componente cai aqui, sem listar classes
    uma a uma e sem exigir que componentes novos lembrem de tratar isso. */
 @media (prefers-reduced-motion: reduce) {
-  [class*="bl-"], [class*="bl-"]::before, [class*="bl-"]::after {
+  [class*='bl-'],
+  [class*='bl-']::before,
+  [class*='bl-']::after {
     transition-duration: 0.001ms !important;
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

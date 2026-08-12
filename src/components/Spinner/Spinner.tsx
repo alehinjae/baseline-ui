@@ -8,7 +8,12 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   label?: string
 }
 
-export function Spinner({ size = 'md', label = 'Carregando', className = '', ...props }: SpinnerProps) {
+export function Spinner({
+  size = 'md',
+  label = 'Carregando',
+  className = '',
+  ...props
+}: SpinnerProps) {
   return (
     <span
       role="status"

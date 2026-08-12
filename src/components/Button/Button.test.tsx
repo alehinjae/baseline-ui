@@ -13,7 +13,11 @@ describe('Button', () => {
   })
 
   it('aplica variant e size como data-attributes', () => {
-    render(<Button variant="danger" size="lg">Excluir</Button>)
+    render(
+      <Button variant="danger" size="lg">
+        Excluir
+      </Button>,
+    )
     const btn = screen.getByRole('button', { name: 'Excluir' })
     expect(btn).toHaveAttribute('data-bl-variant', 'danger')
     expect(btn).toHaveAttribute('data-bl-size', 'lg')
@@ -28,7 +32,11 @@ describe('Button', () => {
 
   it('desabilitado continua focável (focusableWhenDisabled do Base UI) e não dispara onClick', async () => {
     const onClick = vi.fn()
-    render(<Button disabled onClick={onClick}>Indisponível</Button>)
+    render(
+      <Button disabled onClick={onClick}>
+        Indisponível
+      </Button>,
+    )
     const btn = screen.getByRole('button', { name: 'Indisponível' })
     await userEvent.click(btn)
     expect(onClick).not.toHaveBeenCalled()
@@ -39,7 +47,9 @@ describe('Button', () => {
       <>
         <Button variant="solid">Solid</Button>
         <Button variant="outline">Outline</Button>
-        <Button variant="danger" disabled>Danger disabled</Button>
+        <Button variant="danger" disabled>
+          Danger disabled
+        </Button>
       </>,
     )
     await expectNoA11yViolations(container)

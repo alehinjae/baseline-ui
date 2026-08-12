@@ -13,22 +13,37 @@ export const Validity = BaseField.Validity
 // poder concatenar com a classe própria sem ramificação de tipos.
 type WithClass<P> = Omit<P, 'className'> & { className?: string }
 
-export function Root({ className = '', ...props }: WithClass<ComponentProps<typeof BaseField.Root>>) {
+export function Root({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseField.Root>>) {
   return <BaseField.Root className={`bl-field ${className}`.trim()} {...props} />
 }
 
-export function Label({ className = '', ...props }: WithClass<ComponentProps<typeof BaseField.Label>>) {
+export function Label({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseField.Label>>) {
   return <BaseField.Label className={`bl-field-label ${className}`.trim()} {...props} />
 }
 
-export function Control({ className = '', ...props }: WithClass<ComponentProps<typeof BaseField.Control>>) {
+export function Control({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseField.Control>>) {
   return <BaseField.Control className={`bl-field-control ${className}`.trim()} {...props} />
 }
 
-export function Description({ className = '', ...props }: WithClass<ComponentProps<typeof BaseField.Description>>) {
+export function Description({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseField.Description>>) {
   return <BaseField.Description className={`bl-field-description ${className}`.trim()} {...props} />
 }
 
-export function Error({ className = '', ...props }: WithClass<ComponentProps<typeof BaseField.Error>>) {
+export function Error({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseField.Error>>) {
   return <BaseField.Error className={`bl-field-error ${className}`.trim()} {...props} />
 }

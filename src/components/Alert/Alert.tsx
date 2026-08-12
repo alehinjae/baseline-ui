@@ -25,7 +25,9 @@ export function Alert({ variant = 'info', title, className = '', children, ...pr
       className={`bl-alert ${className}`.trim()}
       {...props}
     >
-      <span className="bl-alert-icon" aria-hidden="true">{icon[variant]}</span>
+      <span className="bl-alert-icon" aria-hidden="true">
+        {icon[variant]}
+      </span>
       <div className="bl-alert-body">
         {title && <p className="bl-alert-title">{title}</p>}
         <div className="bl-alert-content">{children}</div>

@@ -21,7 +21,15 @@
 
 /* variante de cor declarada no Root, pintada no Indicator descendente.
    Todos os pares preenchimento×trilho são verificados no build (1.4.11). */
-.bl-progress[data-bl-variant='info'] .bl-progress-indicator { background: var(--bl-color-info-solid); }
-.bl-progress[data-bl-variant='success'] .bl-progress-indicator { background: var(--bl-color-success-solid); }
-.bl-progress[data-bl-variant='warning'] .bl-progress-indicator { background: var(--bl-color-warning-solid); }
-.bl-progress[data-bl-variant='danger'] .bl-progress-indicator { background: var(--bl-color-danger); }
+.bl-progress[data-bl-variant='info'] .bl-progress-indicator {
+  background: var(--bl-color-info-solid);
+}
+.bl-progress[data-bl-variant='success'] .bl-progress-indicator {
+  background: var(--bl-color-success-solid);
+}
+.bl-progress[data-bl-variant='warning'] .bl-progress-indicator {
+  background: var(--bl-color-warning-solid);
+}
+.bl-progress[data-bl-variant='danger'] .bl-progress-indicator {
+  background: var(--bl-color-danger);
+}

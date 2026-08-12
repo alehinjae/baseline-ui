@@ -26,7 +26,9 @@ function Example() {
 describe('Accordion', () => {
   it('Header renderiza como <h3> (hierarquia de heading correta por padrão)', () => {
     render(<Example />)
-    expect(screen.getByRole('heading', { level: 3, name: 'O que é o baseline-ui?' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'O que é o baseline-ui?' }),
+    ).toBeInTheDocument()
   })
 
   it('item inicial aberto mostra o painel; clique alterna outro item', async () => {

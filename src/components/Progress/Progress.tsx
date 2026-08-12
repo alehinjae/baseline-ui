@@ -22,12 +22,20 @@ export function Root({ variant = 'default', className = '', ...props }: Progress
   )
 }
 
-export function Track({ className = '', ...props }: WithClass<ComponentProps<typeof BaseProgress.Track>>) {
+export function Track({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseProgress.Track>>) {
   return <BaseProgress.Track className={`bl-progress-track ${className}`.trim()} {...props} />
 }
 
-export function Indicator({ className = '', ...props }: WithClass<ComponentProps<typeof BaseProgress.Indicator>>) {
-  return <BaseProgress.Indicator className={`bl-progress-indicator ${className}`.trim()} {...props} />
+export function Indicator({
+  className = '',
+  ...props
+}: WithClass<ComponentProps<typeof BaseProgress.Indicator>>) {
+  return (
+    <BaseProgress.Indicator className={`bl-progress-indicator ${className}`.trim()} {...props} />
+  )
 }
 
 // expostos sem estilo, para quem quiser rótulo/porcentagem acessíveis

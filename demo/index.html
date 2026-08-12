@@ -1,247 +1,374 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>baseline-ui — demo</title>
-<!-- Página de verificação interativa dos componentes (roadmap fase 1/4).
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>baseline-ui — demo</title>
+    <!-- Página de verificação interativa dos componentes (roadmap fase 1/4).
      Consome o build real de dist/ — o mesmo artefato que um consumidor npm
      recebe — com React e Base UI resolvidos via import map (esm.sh), sem
      bundler próprio. Rode `npm run build` antes de abrir. -->
-<link rel="stylesheet" href="/dist/styles.css">
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.1.0",
-    "react/jsx-runtime": "https://esm.sh/react@19.1.0/jsx-runtime",
-    "react-dom": "https://esm.sh/react-dom@19.1.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.1.0/client",
-    "@base-ui/react/button": "https://esm.sh/@base-ui/react@1.6.0/button?external=react,react-dom",
-    "@base-ui/react/dialog": "https://esm.sh/@base-ui/react@1.6.0/dialog?external=react,react-dom",
-    "@base-ui/react/field": "https://esm.sh/@base-ui/react@1.6.0/field?external=react,react-dom",
-    "@base-ui/react/switch": "https://esm.sh/@base-ui/react@1.6.0/switch?external=react,react-dom",
-    "@base-ui/react/tabs": "https://esm.sh/@base-ui/react@1.6.0/tabs?external=react,react-dom",
-    "@base-ui/react/accordion": "https://esm.sh/@base-ui/react@1.6.0/accordion?external=react,react-dom",
-    "@base-ui/react/progress": "https://esm.sh/@base-ui/react@1.6.0/progress?external=react,react-dom",
-    "baseline-ui": "/dist/index.js"
-  }
-}
-</script>
-<style>
-  body {
-    margin: 0;
-    padding: 32px;
-    background: var(--bl-color-bg);
-    color: var(--bl-color-text);
-    font-family: var(--bl-font-sans);
-  }
-  main { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-  section { padding: 24px 0; border-bottom: 1px solid var(--bl-color-border); }
-  section:last-child { border-bottom: none; }
-  h2 { font-size: var(--bl-font-size-lg); margin: 0 0 16px; }
-  .row { display: flex; gap: var(--bl-space-3); flex-wrap: wrap; align-items: center; }
-  .col { display: flex; flex-direction: column; gap: var(--bl-space-3); }
-  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 10; }
-</style>
-</head>
-<body>
-<main id="root"></main>
-<script type="module">
-import React, { useState } from 'react'
-import { createRoot } from 'react-dom/client'
-import { Button, Dialog, Field, Switch, Tabs, Accordion, Progress, Card, Text, Badge, Alert, Spinner, Stack, Grid } from 'baseline-ui'
+    <link rel="stylesheet" href="/dist/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19.1.0",
+          "react/jsx-runtime": "https://esm.sh/react@19.1.0/jsx-runtime",
+          "react-dom": "https://esm.sh/react-dom@19.1.0",
+          "react-dom/client": "https://esm.sh/react-dom@19.1.0/client",
+          "@base-ui/react/button": "https://esm.sh/@base-ui/react@1.6.0/button?external=react,react-dom",
+          "@base-ui/react/dialog": "https://esm.sh/@base-ui/react@1.6.0/dialog?external=react,react-dom",
+          "@base-ui/react/field": "https://esm.sh/@base-ui/react@1.6.0/field?external=react,react-dom",
+          "@base-ui/react/switch": "https://esm.sh/@base-ui/react@1.6.0/switch?external=react,react-dom",
+          "@base-ui/react/tabs": "https://esm.sh/@base-ui/react@1.6.0/tabs?external=react,react-dom",
+          "@base-ui/react/accordion": "https://esm.sh/@base-ui/react@1.6.0/accordion?external=react,react-dom",
+          "@base-ui/react/progress": "https://esm.sh/@base-ui/react@1.6.0/progress?external=react,react-dom",
+          "baseline-ui": "/dist/index.js"
+        }
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 32px;
+        background: var(--bl-color-bg);
+        color: var(--bl-color-text);
+        font-family: var(--bl-font-sans);
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      section {
+        padding: 24px 0;
+        border-bottom: 1px solid var(--bl-color-border);
+      }
+      section:last-child {
+        border-bottom: none;
+      }
+      h2 {
+        font-size: var(--bl-font-size-lg);
+        margin: 0 0 16px;
+      }
+      .row {
+        display: flex;
+        gap: var(--bl-space-3);
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--bl-space-3);
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="root"></main>
+    <script type="module">
+      import React, { useState } from 'react'
+      import { createRoot } from 'react-dom/client'
+      import {
+        Button,
+        Dialog,
+        Field,
+        Switch,
+        Tabs,
+        Accordion,
+        Progress,
+        Card,
+        Text,
+        Badge,
+        Alert,
+        Spinner,
+        Stack,
+        Grid,
+      } from 'baseline-ui'
 
-const h = React.createElement
+      const h = React.createElement
 
-// Ciclo: 'system' (sem atributo, segue prefers-color-scheme) → 'light' →
-// 'dark' → volta a 'system'. Espelha o uso real esperado de data-bl-theme
-// num app consumidor (ver CHANGELOG 0.4.0 e scripts/build-tokens.mjs).
-function ThemeToggle() {
-  const [theme, setTheme] = useState('system')
+      // Ciclo: 'system' (sem atributo, segue prefers-color-scheme) → 'light' →
+      // 'dark' → volta a 'system'. Espelha o uso real esperado de data-bl-theme
+      // num app consumidor (ver CHANGELOG 0.4.0 e scripts/build-tokens.mjs).
+      function ThemeToggle() {
+        const [theme, setTheme] = useState('system')
 
-  const applyTheme = (next) => {
-    if (next === 'system') document.documentElement.removeAttribute('data-bl-theme')
-    else document.documentElement.setAttribute('data-bl-theme', next)
-    setTheme(next)
-  }
+        const applyTheme = (next) => {
+          if (next === 'system') document.documentElement.removeAttribute('data-bl-theme')
+          else document.documentElement.setAttribute('data-bl-theme', next)
+          setTheme(next)
+        }
 
-  const next = { system: 'light', light: 'dark', dark: 'system' }
-  const label = { system: '🖥️ Sistema', light: '☀️ Claro', dark: '🌙 Escuro' }
+        const next = { system: 'light', light: 'dark', dark: 'system' }
+        const label = { system: '🖥️ Sistema', light: '☀️ Claro', dark: '🌙 Escuro' }
 
-  return h(Button, {
-    className: 'theme-toggle',
-    variant: 'outline',
-    size: 'sm',
-    onClick: () => applyTheme(next[theme]),
-  }, label[theme])
-}
+        return h(
+          Button,
+          {
+            className: 'theme-toggle',
+            variant: 'outline',
+            size: 'sm',
+            onClick: () => applyTheme(next[theme]),
+          },
+          label[theme],
+        )
+      }
 
-function App() {
-  return h(React.Fragment, null,
-    h(ThemeToggle),
-    h('section', null,
-      h('h2', null, 'Button'),
-      h('div', { className: 'row' },
-        h(Button, { variant: 'solid' }, 'Solid'),
-        h(Button, { variant: 'outline' }, 'Outline'),
-        h(Button, { variant: 'ghost' }, 'Ghost'),
-        h(Button, { variant: 'danger' }, 'Danger'),
-        h(Button, { variant: 'solid', disabled: true }, 'Disabled'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Field'),
-      // validationMode default do Base UI é 'onSubmit'; aqui não há <form>,
-      // então validamos no blur para a demo ser autocontida
-      h(Field.Root, { validationMode: 'onBlur' },
-        h(Field.Label, null, 'E-mail'),
-        h(Field.Control, { type: 'email', required: true, placeholder: 'voce@exemplo.com' }),
-        h(Field.Description, null, 'Valide saindo do campo vazio: o erro aparece.'),
-        h(Field.Error, { match: 'valueMissing' }, 'Informe um e-mail.'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Switch'),
-      h('div', { className: 'row' },
-        h(Switch.Root, { defaultChecked: true }, h(Switch.Thumb)),
-        h(Switch.Root, null, h(Switch.Thumb)),
-        h(Switch.Root, { disabled: true }, h(Switch.Thumb)),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Dialog'),
-      h(Dialog.Root, null,
-        h(Dialog.Trigger, { render: h(Button, { variant: 'outline' }) }, 'Abrir dialog'),
-        h(Dialog.Portal, null,
-          h(Dialog.Backdrop),
-          h(Dialog.Popup, null,
-            h(Dialog.Title, null, 'Confirmar ação'),
-            h(Dialog.Description, null, 'Isso não pode ser desfeito.'),
-            h(Dialog.Actions, null,
-              h(Dialog.Close, { render: h(Button, { variant: 'ghost' }) }, 'Cancelar'),
-              h(Button, { variant: 'danger' }, 'Confirmar'),
+      function App() {
+        return h(
+          React.Fragment,
+          null,
+          h(ThemeToggle),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Button'),
+            h(
+              'div',
+              { className: 'row' },
+              h(Button, { variant: 'solid' }, 'Solid'),
+              h(Button, { variant: 'outline' }, 'Outline'),
+              h(Button, { variant: 'ghost' }, 'Ghost'),
+              h(Button, { variant: 'danger' }, 'Danger'),
+              h(Button, { variant: 'solid', disabled: true }, 'Disabled'),
             ),
           ),
-        ),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Tabs'),
-      h(Tabs.Root, { defaultValue: 'a' },
-        h(Tabs.List, null,
-          h(Tabs.Tab, { value: 'a' }, 'Visão geral'),
-          h(Tabs.Tab, { value: 'b' }, 'Configurações'),
-          h(Tabs.Tab, { value: 'c', disabled: true }, 'Desabilitada'),
-        ),
-        h(Tabs.Panel, { value: 'a' }, 'Conteúdo da aba Visão geral.'),
-        h(Tabs.Panel, { value: 'b' }, 'Conteúdo da aba Configurações.'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Accordion'),
-      h(Accordion.Root, { defaultValue: ['1'] },
-        h(Accordion.Item, { value: '1' },
-          h(Accordion.Header, null, h(Accordion.Trigger, null, 'O que é o baseline-ui?')),
-          h(Accordion.Panel, null, 'Design system principal, construído sobre o Base UI.'),
-        ),
-        h(Accordion.Item, { value: '2' },
-          h(Accordion.Header, null, h(Accordion.Trigger, null, 'Como os tokens funcionam?')),
-          h(Accordion.Panel, null, 'Duas camadas: primitivos e semânticos, formato W3C.'),
-        ),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Progress'),
-      h('div', { className: 'col' },
-        h(Progress.Root, { value: 70 },
-          h(Progress.Track, null, h(Progress.Indicator)),
-        ),
-        h(Progress.Root, { value: 45, variant: 'info' },
-          h(Progress.Track, null, h(Progress.Indicator)),
-        ),
-        h(Progress.Root, { value: 90, variant: 'success' },
-          h(Progress.Track, null, h(Progress.Indicator)),
-        ),
-        h(Progress.Root, { value: 30, variant: 'warning' },
-          h(Progress.Track, null, h(Progress.Indicator)),
-        ),
-        h(Progress.Root, { value: 15, variant: 'danger' },
-          h(Progress.Track, null, h(Progress.Indicator)),
-        ),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Card'),
-      h('div', { className: 'row' },
-        h(Card, { padding: 'md' },
-          h(Text, { variant: 'h4' }, 'Card padrão'),
-          h(Text, { variant: 'muted-sm' }, 'Com sombra sutil e borda.'),
-        ),
-        h(Card, { padding: 'md', interactive: true },
-          h(Text, { variant: 'h4' }, 'Card interativo'),
-          h(Text, { variant: 'muted-sm' }, 'Passe o mouse por cima.'),
-        ),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Text'),
-      h('div', { className: 'col' },
-        h(Text, { variant: 'h1' }, 'Heading 1'),
-        h(Text, { variant: 'h2' }, 'Heading 2'),
-        h(Text, { variant: 'h3' }, 'Heading 3'),
-        h(Text, { variant: 'h4' }, 'Heading 4'),
-        h(Text, { variant: 'body-md' }, 'Corpo de texto padrão (body-md).'),
-        h(Text, { variant: 'muted-sm' }, 'Texto secundário/legenda (muted-sm).'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Badge'),
-      h('div', { className: 'row' },
-        h(Badge, { variant: 'gray' }, 'Gray'),
-        h(Badge, { variant: 'blue' }, 'Blue'),
-        h(Badge, { variant: 'green' }, 'Green'),
-        h(Badge, { variant: 'orange' }, 'Orange'),
-        h(Badge, { variant: 'red' }, 'Red'),
-        h(Badge, { variant: 'purple' }, 'Purple'),
-        h(Badge, { variant: 'pink' }, 'Pink'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Alert'),
-      h('div', { className: 'col' },
-        h(Alert, { variant: 'info' }, 'Mensagem informativa.'),
-        h(Alert, { variant: 'success' }, 'Ação concluída com sucesso.'),
-        h(Alert, { variant: 'warning' }, 'Atenção: revise antes de continuar.'),
-        h(Alert, { variant: 'danger' }, 'Erro: algo deu errado.'),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Spinner'),
-      h('div', { className: 'row' },
-        h(Spinner, { size: 'sm' }),
-        h(Spinner, { size: 'md' }),
-        h(Spinner, { size: 'lg' }),
-      ),
-    ),
-    h('section', null,
-      h('h2', null, 'Stack & Grid'),
-      h('div', { className: 'col' },
-        h(Stack, { direction: 'row', gap: 3 },
-          h(Badge, { variant: 'gray' }, 'Stack'),
-          h(Badge, { variant: 'gray' }, 'row'),
-          h(Badge, { variant: 'gray' }, 'gap 3'),
-        ),
-        h(Grid, { cols: 3, gap: 3 },
-          h(Card, { padding: 'sm' }, 'Grid 1'),
-          h(Card, { padding: 'sm' }, 'Grid 2'),
-          h(Card, { padding: 'sm' }, 'Grid 3'),
-        ),
-      ),
-    ),
-  )
-}
+          h(
+            'section',
+            null,
+            h('h2', null, 'Field'),
+            // validationMode default do Base UI é 'onSubmit'; aqui não há <form>,
+            // então validamos no blur para a demo ser autocontida
+            h(
+              Field.Root,
+              { validationMode: 'onBlur' },
+              h(Field.Label, null, 'E-mail'),
+              h(Field.Control, { type: 'email', required: true, placeholder: 'voce@exemplo.com' }),
+              h(Field.Description, null, 'Valide saindo do campo vazio: o erro aparece.'),
+              h(Field.Error, { match: 'valueMissing' }, 'Informe um e-mail.'),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Switch'),
+            h(
+              'div',
+              { className: 'row' },
+              h(Switch.Root, { defaultChecked: true }, h(Switch.Thumb)),
+              h(Switch.Root, null, h(Switch.Thumb)),
+              h(Switch.Root, { disabled: true }, h(Switch.Thumb)),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Dialog'),
+            h(
+              Dialog.Root,
+              null,
+              h(Dialog.Trigger, { render: h(Button, { variant: 'outline' }) }, 'Abrir dialog'),
+              h(
+                Dialog.Portal,
+                null,
+                h(Dialog.Backdrop),
+                h(
+                  Dialog.Popup,
+                  null,
+                  h(Dialog.Title, null, 'Confirmar ação'),
+                  h(Dialog.Description, null, 'Isso não pode ser desfeito.'),
+                  h(
+                    Dialog.Actions,
+                    null,
+                    h(Dialog.Close, { render: h(Button, { variant: 'ghost' }) }, 'Cancelar'),
+                    h(Button, { variant: 'danger' }, 'Confirmar'),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Tabs'),
+            h(
+              Tabs.Root,
+              { defaultValue: 'a' },
+              h(
+                Tabs.List,
+                null,
+                h(Tabs.Tab, { value: 'a' }, 'Visão geral'),
+                h(Tabs.Tab, { value: 'b' }, 'Configurações'),
+                h(Tabs.Tab, { value: 'c', disabled: true }, 'Desabilitada'),
+              ),
+              h(Tabs.Panel, { value: 'a' }, 'Conteúdo da aba Visão geral.'),
+              h(Tabs.Panel, { value: 'b' }, 'Conteúdo da aba Configurações.'),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Accordion'),
+            h(
+              Accordion.Root,
+              { defaultValue: ['1'] },
+              h(
+                Accordion.Item,
+                { value: '1' },
+                h(Accordion.Header, null, h(Accordion.Trigger, null, 'O que é o baseline-ui?')),
+                h(Accordion.Panel, null, 'Design system principal, construído sobre o Base UI.'),
+              ),
+              h(
+                Accordion.Item,
+                { value: '2' },
+                h(Accordion.Header, null, h(Accordion.Trigger, null, 'Como os tokens funcionam?')),
+                h(Accordion.Panel, null, 'Duas camadas: primitivos e semânticos, formato W3C.'),
+              ),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Progress'),
+            h(
+              'div',
+              { className: 'col' },
+              h(Progress.Root, { value: 70 }, h(Progress.Track, null, h(Progress.Indicator))),
+              h(
+                Progress.Root,
+                { value: 45, variant: 'info' },
+                h(Progress.Track, null, h(Progress.Indicator)),
+              ),
+              h(
+                Progress.Root,
+                { value: 90, variant: 'success' },
+                h(Progress.Track, null, h(Progress.Indicator)),
+              ),
+              h(
+                Progress.Root,
+                { value: 30, variant: 'warning' },
+                h(Progress.Track, null, h(Progress.Indicator)),
+              ),
+              h(
+                Progress.Root,
+                { value: 15, variant: 'danger' },
+                h(Progress.Track, null, h(Progress.Indicator)),
+              ),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Card'),
+            h(
+              'div',
+              { className: 'row' },
+              h(
+                Card,
+                { padding: 'md' },
+                h(Text, { variant: 'h4' }, 'Card padrão'),
+                h(Text, { variant: 'muted-sm' }, 'Com sombra sutil e borda.'),
+              ),
+              h(
+                Card,
+                { padding: 'md', interactive: true },
+                h(Text, { variant: 'h4' }, 'Card interativo'),
+                h(Text, { variant: 'muted-sm' }, 'Passe o mouse por cima.'),
+              ),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Text'),
+            h(
+              'div',
+              { className: 'col' },
+              h(Text, { variant: 'h1' }, 'Heading 1'),
+              h(Text, { variant: 'h2' }, 'Heading 2'),
+              h(Text, { variant: 'h3' }, 'Heading 3'),
+              h(Text, { variant: 'h4' }, 'Heading 4'),
+              h(Text, { variant: 'body-md' }, 'Corpo de texto padrão (body-md).'),
+              h(Text, { variant: 'muted-sm' }, 'Texto secundário/legenda (muted-sm).'),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Badge'),
+            h(
+              'div',
+              { className: 'row' },
+              h(Badge, { variant: 'gray' }, 'Gray'),
+              h(Badge, { variant: 'blue' }, 'Blue'),
+              h(Badge, { variant: 'green' }, 'Green'),
+              h(Badge, { variant: 'orange' }, 'Orange'),
+              h(Badge, { variant: 'red' }, 'Red'),
+              h(Badge, { variant: 'purple' }, 'Purple'),
+              h(Badge, { variant: 'pink' }, 'Pink'),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Alert'),
+            h(
+              'div',
+              { className: 'col' },
+              h(Alert, { variant: 'info' }, 'Mensagem informativa.'),
+              h(Alert, { variant: 'success' }, 'Ação concluída com sucesso.'),
+              h(Alert, { variant: 'warning' }, 'Atenção: revise antes de continuar.'),
+              h(Alert, { variant: 'danger' }, 'Erro: algo deu errado.'),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Spinner'),
+            h(
+              'div',
+              { className: 'row' },
+              h(Spinner, { size: 'sm' }),
+              h(Spinner, { size: 'md' }),
+              h(Spinner, { size: 'lg' }),
+            ),
+          ),
+          h(
+            'section',
+            null,
+            h('h2', null, 'Stack & Grid'),
+            h(
+              'div',
+              { className: 'col' },
+              h(
+                Stack,
+                { direction: 'row', gap: 3 },
+                h(Badge, { variant: 'gray' }, 'Stack'),
+                h(Badge, { variant: 'gray' }, 'row'),
+                h(Badge, { variant: 'gray' }, 'gap 3'),
+              ),
+              h(
+                Grid,
+                { cols: 3, gap: 3 },
+                h(Card, { padding: 'sm' }, 'Grid 1'),
+                h(Card, { padding: 'sm' }, 'Grid 2'),
+                h(Card, { padding: 'sm' }, 'Grid 3'),
+              ),
+            ),
+          ),
+        )
+      }
 
-createRoot(document.getElementById('root')).render(h(App))
-</script>
-</body>
+      createRoot(document.getElementById('root')).render(h(App))
+    </script>
+  </body>
 </html>

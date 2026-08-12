@@ -7,7 +7,9 @@ describe('Progress', () => {
   it('expõe role=progressbar com aria-value* corretos', () => {
     render(
       <Progress.Root value={70} aria-label="Upload">
-        <Progress.Track><Progress.Indicator /></Progress.Track>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
       </Progress.Root>,
     )
     const bar = screen.getByRole('progressbar', { name: 'Upload' })
@@ -19,7 +21,9 @@ describe('Progress', () => {
   it('aplica variant como data-attribute no Root', () => {
     render(
       <Progress.Root value={50} variant="danger" aria-label="Erro">
-        <Progress.Track><Progress.Indicator /></Progress.Track>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
       </Progress.Root>,
     )
     expect(screen.getByRole('progressbar')).toHaveAttribute('data-bl-variant', 'danger')
@@ -28,7 +32,9 @@ describe('Progress', () => {
   it('default é variant=default quando não especificado', () => {
     render(
       <Progress.Root value={10} aria-label="Progresso">
-        <Progress.Track><Progress.Indicator /></Progress.Track>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
       </Progress.Root>,
     )
     expect(screen.getByRole('progressbar')).toHaveAttribute('data-bl-variant', 'default')
@@ -37,7 +43,9 @@ describe('Progress', () => {
   it('não tem violações de acessibilidade', async () => {
     const { container } = render(
       <Progress.Root value={70} aria-label="Upload">
-        <Progress.Track><Progress.Indicator /></Progress.Track>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
       </Progress.Root>,
     )
     await expectNoA11yViolations(container)

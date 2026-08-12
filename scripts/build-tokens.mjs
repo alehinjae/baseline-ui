@@ -76,11 +76,15 @@ for (const t of primitiveTokens) {
 function semanticDecls(file, label) {
   return flatten(file).map((t) => {
     if (!isAlias(t.value)) {
-      throw new Error(`Semântico '${t.path}' (${label}) deve ser alias {caminho}, achou: ${t.value}`)
+      throw new Error(
+        `Semântico '${t.path}' (${label}) deve ser alias {caminho}, achou: ${t.value}`,
+      )
     }
     const target = t.value.slice(1, -1)
     if (!primitivePaths.has(target)) {
-      throw new Error(`Semântico '${t.path}' (${label}) aponta para primitivo inexistente: ${target}`)
+      throw new Error(
+        `Semântico '${t.path}' (${label}) aponta para primitivo inexistente: ${target}`,
+      )
     }
     return { path: t.path, css: `var(${cssVar(target)})` }
   })
@@ -89,10 +93,18 @@ function semanticDecls(file, label) {
 const light = semanticDecls(semanticLight, 'light')
 const dark = semanticDecls(semanticDark, 'dark')
 
-const lightPaths = light.map((t) => t.path).sort().join('\n')
-const darkPaths = dark.map((t) => t.path).sort().join('\n')
+const lightPaths = light
+  .map((t) => t.path)
+  .sort()
+  .join('\n')
+const darkPaths = dark
+  .map((t) => t.path)
+  .sort()
+  .join('\n')
 if (lightPaths !== darkPaths) {
-  throw new Error('semantic.light.json e semantic.dark.json têm chaves diferentes — todo token semântico precisa existir nos dois modos')
+  throw new Error(
+    'semantic.light.json e semantic.dark.json têm chaves diferentes — todo token semântico precisa existir nos dois modos',
+  )
 }
 
 const line = (path, css) => `  ${cssVar(path)}: ${css};`
@@ -133,4 +145,6 @@ ${dark.map((t) => line(t.path, t.css)).join('\n')}
 `
 
 writeFileSync(join(root, 'src', 'tokens.css'), css)
-console.log(`tokens.css gerado: ${primitiveTokens.length} primitivos, ${light.length} semânticos × 2 modos`)
+console.log(
+  `tokens.css gerado: ${primitiveTokens.length} primitivos, ${light.length} semânticos × 2 modos`,
+)

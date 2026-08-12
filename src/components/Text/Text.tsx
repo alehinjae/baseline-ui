@@ -1,9 +1,7 @@
 import { createElement, type HTMLAttributes, type ReactNode } from 'react'
 
 export type TextVariant =
-  | 'h1' | 'h2' | 'h3' | 'h4'
-  | 'body-sm' | 'body-md' | 'body-lg'
-  | 'muted-sm' | 'muted-md'
+  'h1' | 'h2' | 'h3' | 'h4' | 'body-sm' | 'body-md' | 'body-lg' | 'muted-sm' | 'muted-md'
 
 export type TextElement = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'label' | 'div'
 
