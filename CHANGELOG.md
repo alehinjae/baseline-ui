@@ -5,6 +5,32 @@ Como o pacote é instalado via `github:alehinjae/baseline-ui` (sem registro
 npm), a "versão" aqui é a de `package.json`/`baseline.manifest.json` — para
 fixar uma exata, use `npm install github:alehinjae/baseline-ui#<sha>`.
 
+## [0.6.0] — 2026-08-12
+
+### Adicionado
+
+- Estrutura spec-driven (`docs/specs/`) pra iniciativas transversais,
+  separada de `docs/roadmap.md` e `docs/decisions/`. 5 specs criadas a
+  partir de um audit real (`ds-audit` da Southleft, 70/100).
+- **Spec 0001 (tooling-foundation)**: ESLint (flat config,
+  `eslint-plugin-jsx-a11y`), Prettier, Husky + lint-staged, GitHub
+  Actions CI (`build`/`typecheck`/`test`/`lint`/`format:check` em todo
+  push/PR).
+- **Spec 0002 (accessibility-contract-completion)**: `Switch`
+  redimensionado — área de toque real 44×44 (AAA/Apple HIG), trilho
+  visual mantém 36×20 via pseudo-elemento (ADR 0010, estende ADR 0008).
+  Teste estrutural de regressão pra `prefers-reduced-motion`
+  (`src/reduced-motion.test.ts`).
+- `docs/positioning.md` — frase de posicionamento do projeto, 100%
+  verdadeira desde o fechamento da spec 0002.
+- ADR 0009 (Base UI mantido sobre Radix Primitives e vendorização) e
+  ADR 0010 (Switch 44×44).
+
+### Corrigido
+
+- Área de toque do `Switch`, medida em 20px de altura desde a v0.5.0
+  (abaixo do piso WCAG 2.2 AA) — agora 44×44.
+
 ## [0.5.0] — 2026-08-11
 
 ### Adicionado

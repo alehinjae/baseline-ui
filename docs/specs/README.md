@@ -31,8 +31,8 @@ Template em [`_template/`](./_template/).
 
 | #                                                        | Nome                              | Status | Cobre                                                                           |
 | -------------------------------------------------------- | --------------------------------- | ------ | ------------------------------------------------------------------------------- |
-| [0001](./0001-tooling-foundation/spec.md)                | tooling-foundation                | draft  | CI/CD, ESLint, Prettier, Husky                                                  |
-| [0002](./0002-accessibility-contract-completion/spec.md) | accessibility-contract-completion | draft  | Área de toque do Switch (44×44), teste de regressão de `prefers-reduced-motion` |
+| [0001](./0001-tooling-foundation/spec.md)                | tooling-foundation                | done   | CI/CD, ESLint, Prettier, Husky                                                  |
+| [0002](./0002-accessibility-contract-completion/spec.md) | accessibility-contract-completion | done   | Área de toque do Switch (44×44), teste de regressão de `prefers-reduced-motion` |
 | [0003](./0003-generated-documentation/spec.md)           | generated-documentation           | draft  | Docs geradas do manifest, `AGENTS.md`, `llms.txt`, `CONTRIBUTING.md`            |
 | [0004](./0004-token-and-type-contract-hygiene/spec.md)   | token-and-type-contract-hygiene   | draft  | Tipos `*Props` nomeados, union types, limpeza de tokens hardcoded               |
 | [0005](./0005-baseline-ui-mcp/spec.md)                   | baseline-ui-mcp                   | draft  | Servidor MCP expondo manifest + tokens + garantias                              |
@@ -48,4 +48,5 @@ open-source da Southleft) rodado contra o baseline-ui em 2026-08-11 —
 nota 70/100 (C), relatório completo em `audit/report.md` (não
 versionado) — cruzado com achados próprios da sessão (hit-area do
 Switch, `prefers-reduced-motion` sem teste, frase de posicionamento em
-`docs/positioning.md` só ~90% verdadeira até a spec 0002 fechar).
+`docs/positioning.md` — 100% verdadeira desde que a spec 0002 fechou em
+2026-08-12).

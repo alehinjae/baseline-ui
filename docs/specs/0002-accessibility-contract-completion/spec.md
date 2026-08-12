@@ -1,6 +1,6 @@
 # 0002 — accessibility-contract-completion
 
-Status: draft
+Status: done
 Owner: alehinjae
 Related: ADR 0008 (papel > estado > expressão), audit gap: Accessibility 53/F (`audit/report.md`), `docs/positioning.md` (frase de pitch)
 
@@ -51,20 +51,20 @@ reduce` zera duração de transição/animação em pelo menos um componente
 
 ## Critério de aceite
 
-- [ ] `Switch` medido ao vivo (Browser pane ou teste) com hit-area ≥
-      44×44px, em pelo menos os dois modos (light/dark) e nos três
-      estados (unchecked/checked/disabled).
-- [ ] Suíte de teste nova cobrindo `prefers-reduced-motion` falha se a
+- [x] `Switch` medido ao vivo (Browser pane) com hit-area ≥ 44×44px, nos
+      dois modos (light/dark) e nos três estados
+      (unchecked/checked/disabled) — todos confirmados 44×44 exato.
+- [x] Suíte de teste nova cobrindo `prefers-reduced-motion` falha se a
       regra em `src/reduced-motion.css` for removida ou alterada pra não
-      zerar a duração.
-- [ ] `npm run test` e `npm run build` continuam verdes depois da
-      mudança.
-- [ ] ADR nova (estendendo ADR 0008) registrando a escolha de 44×44 sobre
-      24×24, com o motivo (alinhamento com o contrato `confirm-action` do
-      liquid-interface).
-- [ ] `docs/positioning.md` existe e toda alegação nele aponta pra um
-      arquivo/script real do repositório — mesmo padrão de rigor das
-      ADRs.
+      zerar a duração — `src/reduced-motion.test.ts`, testado quebrando
+      de propósito (removendo `!important` de `transition-duration`) e
+      confirmando que o teste pega, antes de restaurar.
+- [x] `npm run test` e `npm run build` continuam verdes depois da
+      mudança (62/62 testes, incluindo os 4 novos).
+- [x] ADR nova (estendendo ADR 0008) registrando a escolha de 44×44 sobre
+      24×24 — [ADR 0010](../../decisions/0010-switch-44x44-via-pseudo-elemento.md).
+- [x] `docs/positioning.md` existe e toda alegação nele aponta pra um
+      arquivo/script real do repositório.
 
 ## Por que essa ordem
 
