@@ -5,6 +5,25 @@ Como o pacote é instalado via `github:alehinjae/baseline-ui` (sem registro
 npm), a "versão" aqui é a de `package.json`/`baseline.manifest.json` — para
 fixar uma exata, use `npm install github:alehinjae/baseline-ui#<sha>`.
 
+## [0.5.0] — 2026-08-11
+
+### Adicionado
+- `src/reduced-motion.css`: toda transição/animação de qualquer componente
+  agora respeita `prefers-reduced-motion` (WCAG 2.3.3), via regra catch-all
+  `[class*="bl-"]` — não exige tratamento manual em componentes novos.
+- [ADR 0008](./docs/decisions/0008-papel-estado-expressao.md): hierarquia
+  **papel > estado > expressão** formalizada como princípio do projeto,
+  importada da tese de contratos verificáveis do
+  `liquid-interface-design-system` (pesquisa própria do usuário). Mapeia
+  Base UI = papel/estado, tokens+CSS = expressão — o que já era verdade,
+  agora com vocabulário e regra de precedência explícitas.
+
+### Encontrado, não corrigido
+- Área de toque do `Switch` medida em 20px de altura — abaixo do piso
+  WCAG 2.2 AA (24×24, SC 2.5.8). Redimensionar é decisão visual, registrada
+  como pendência em `docs/roadmap.md`, aguardando decisão do usuário sobre
+  o limiar (24×24 AA vs. 44×44 AAA/Apple HIG).
+
 ## [0.4.0] — 2026-07-14
 
 ### Adicionado

@@ -55,6 +55,18 @@ padrão dissecado for novo.
 - Tema forçado por atributo (`[data-bl-theme]`) além do
   `prefers-color-scheme`
 
+## Garantias herdadas do liquid-interface-design-system (ADR 0008)
+
+- [x] `prefers-reduced-motion` tratado globalmente (`src/reduced-motion.css`)
+- [ ] Área de toque mínima — `Switch` mede 20px de altura hoje, abaixo do
+      piso WCAG 2.2 AA (24×24). Decisão pendente do usuário: adotar 24×24
+      (AA, consistente com o padrão já usado em `check-contrast.mjs`) ou
+      44×44 (AAA/Apple HIG, o valor que o contrato `confirm-action` usa)
+- [ ] Considerar um painel de verificação de garantias na demo, inspirado
+      no `guardian/validate.js` daquele projeto (mede no DOM vivo: nome
+      acessível, foco+indicador, contraste, área de toque) — hoje
+      `check-contrast` e `jest-axe` cobrem parte disso só estaticamente
+
 ## Perguntas abertas (herdadas do handoff de 2026-07-11)
 
 - ~~Quando o baseline-ui vira o design system principal?~~ → virou, hoje.

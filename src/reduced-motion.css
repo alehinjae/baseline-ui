@@ -1,0 +1,17 @@
+/* Garantia de acessibilidade (WCAG 2.3.3) herdada do contrato confirm-action
+   do liquid-interface-design-system: toda expressão visual precisa tratar
+   prefers-reduced-motion, não como escolha de cada componente.
+   Ver docs/decisions/0008-papel-estado-expressao.md.
+
+   Regra única, catch-all via [class*="bl-"] — a convenção de nomes do
+   projeto (cssClassPrefix "bl-", ver baseline.manifest.json) já garante que
+   todo elemento estilizado por um componente cai aqui, sem listar classes
+   uma a uma e sem exigir que componentes novos lembrem de tratar isso. */
+@media (prefers-reduced-motion: reduce) {
+  [class*="bl-"], [class*="bl-"]::before, [class*="bl-"]::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,6 +1,7 @@
 /* Ponto de entrada único de estilos. Consumidores importam isto uma vez,
    no layout raiz da aplicação: import 'baseline-ui/styles.css' */
 @import './tokens.css';
+@import './reduced-motion.css';
 @import './components/Button/Button.css';
 @import './components/Dialog/Dialog.css';
 @import './components/Field/Field.css';
