@@ -1,21 +1,45 @@
 /* Dimensões do trilho/thumb são locais do componente (não tokens globais):
    trilho = 2×thumb + 2×folga, thumb = space-4, folga = 2px. Se aparecerem
-   tamanhos de Switch (sm/lg), promovemos a tokens de componente — fase 2. */
+   tamanhos de Switch (sm/lg), promovemos a tokens de componente — fase 2.
+
+   --_hit (44px, AAA/Apple HIG — ADR 0010): a área de toque REAL do
+   Switch.Root, maior que o trilho visual. Em vez de inflar o trilho
+   inteiro (ficaria desproporcional), o trilho compacto vira um
+   ::before centralizado dentro de uma caixa clicável maior — só a
+   caixa cresce, a aparência continua igual à de antes do ADR 0010. */
 .bl-switch {
   --_thumb: var(--bl-space-4);
   --_gap: 2px;
+  --_track-w: calc(var(--_thumb) * 2 + var(--_gap) * 2);
+  --_track-h: calc(var(--_thumb) + var(--_gap) * 2);
+  --_hit: 44px;
+  --_thumb-inset: calc((var(--_hit) - var(--_track-w)) / 2 + var(--_gap));
+  --_thumb-top: calc((var(--_hit) - var(--_thumb)) / 2);
+  --_thumb-travel: calc(var(--_track-w) - var(--_thumb) - var(--_gap) * 2);
+
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  width: calc(var(--_thumb) * 2 + var(--_gap) * 2);
-  padding: var(--_gap);
+  width: var(--_hit);
+  height: var(--_hit);
+  padding: 0;
   border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.bl-switch::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--_track-w);
+  height: var(--_track-h);
+  transform: translate(-50%, -50%);
   border-radius: var(--bl-radius-full);
   /* border-strong (≥3:1): o trilho é o próprio componente — WCAG 1.4.11 */
   background: var(--bl-color-border-strong);
-  cursor: pointer;
   transition: background-color 0.15s ease;
 }
-.bl-switch[data-checked] {
+.bl-switch[data-checked]::before {
   background: var(--bl-color-accent);
 }
 .bl-switch[data-disabled] {
@@ -28,6 +52,9 @@
 }
 
 .bl-switch-thumb {
+  position: absolute;
+  top: var(--_thumb-top);
+  left: var(--_thumb-inset);
   width: var(--_thumb);
   height: var(--_thumb);
   border-radius: var(--bl-radius-full);
@@ -35,5 +62,5 @@
   transition: transform 0.15s ease;
 }
 .bl-switch-thumb[data-checked] {
-  transform: translateX(var(--_thumb));
+  transform: translateX(var(--_thumb-travel));
 }

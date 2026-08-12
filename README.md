@@ -1,5 +1,8 @@
 # baseline-ui
 
+> Acessibilidade não é revisada — é compilada. Ver
+> [`docs/positioning.md`](./docs/positioning.md).
+
 Design system principal do ecossistema, construído dissecando o
 [Base UI](https://base-ui.com) (motor de primitivas headless dos times por
 trás do Radix + Floating UI). Nasceu como projeto de estudo; desde
