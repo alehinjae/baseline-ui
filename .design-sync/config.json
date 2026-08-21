@@ -1,0 +1,21 @@
+{
+  "projectId": "0873d66b-35fc-4172-9e77-2f4f97bf8966",
+  "pkg": "baseline-ui",
+  "globalName": "BaselineUI",
+  "shape": "package",
+  "buildCmd": "npm run build",
+  "cssEntry": "dist/styles.css",
+  "tokensGlob": "tokens/**/*.json",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Dialog": { "cardMode": "single", "viewport": "480x360" }
+  },
+  "componentSrcMap": {
+    "Accordion": "src/components/Accordion/Accordion.tsx",
+    "Dialog": "src/components/Dialog/Dialog.tsx",
+    "Field": "src/components/Field/Field.tsx",
+    "Progress": "src/components/Progress/Progress.tsx",
+    "Switch": "src/components/Switch/Switch.tsx",
+    "Tabs": "src/components/Tabs/Tabs.tsx"
+  }
+}
