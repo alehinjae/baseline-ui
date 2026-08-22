@@ -4,6 +4,8 @@
   gap: var(--bl-space-2);
   font-family: var(--bl-font-sans);
   font-size: var(--bl-font-size-md);
+  /* 1px: convenção CSS de linha fina, não decisão de escala — nenhum
+     componente varia espessura de borda (triagem — ADR 0011) */
   border: 1px solid;
   border-radius: var(--bl-radius-md);
   padding: var(--bl-space-3) var(--bl-space-4);

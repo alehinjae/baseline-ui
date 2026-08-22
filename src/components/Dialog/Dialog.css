@@ -16,7 +16,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(420px, calc(100vw - 32px));
+  /* 420px: largura máx. do popup, decisão de produto única, sem token
+     equivalente (triagem — ADR 0011). Margem de viewport (32px total,
+     bate exato com space.6): migrada pra token no lugar de número solto. */
+  width: min(420px, calc(100vw - var(--bl-space-6)));
   background: var(--bl-color-bg);
   color: var(--bl-color-text);
   border-radius: var(--bl-radius-lg);

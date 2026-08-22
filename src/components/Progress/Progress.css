@@ -4,6 +4,9 @@
 
 .bl-progress-track {
   display: block;
+  /* 6px: dimensão única do Progress, sem padrão repetido em outro
+     componente ainda — promover a token se um segundo consumidor
+     aparecer (mesmo critério já usado pro Switch) (triagem — ADR 0011) */
   height: 6px;
   width: 100%;
   background: var(--bl-color-bg-subtle);

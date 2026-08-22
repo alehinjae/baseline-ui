@@ -8,6 +8,7 @@
   line-height: 1.4;
   padding: 0 var(--bl-space-2);
   border-radius: var(--bl-radius-sm);
+  /* 1px: mesma convenção do Alert — não é decisão de escala (triagem — ADR 0011) */
   border: 1px solid;
 }
 
