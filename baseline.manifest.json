@@ -1,7 +1,7 @@
 {
   "$description": "Contrato legível por máquina do baseline-ui. Descreve cada componente — partes, variantes, estados e tokens consumidos — para que uma ferramenta (script, MCP do Figma, plugin) consiga reconstruir a biblioteca como componentes/Variables no Figma sem ler o código-fonte. Mantido à mão junto com cada componente; o build falha se ele divergir do que src/ exporta (scripts/check-manifest.mjs). Ver ADR 0005 e docs/figma/mapeamento-figma.md.",
   "name": "baseline-ui",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "conventions": {
     "cssVarPrefix": "--bl-",
     "cssClassPrefix": "bl-",
@@ -53,7 +53,9 @@
         "font-size.sm",
         "font-size.md",
         "font-size.lg",
-        "font-weight.medium"
+        "font-weight.medium",
+        "focus-ring.width",
+        "focus-ring.offset"
       ]
     },
     "Dialog": {
@@ -117,7 +119,9 @@
         "font.sans",
         "font-size.sm",
         "font-size.md",
-        "font-weight.medium"
+        "font-weight.medium",
+        "focus-ring.width",
+        "focus-ring.offset"
       ]
     },
     "Switch": {
@@ -128,7 +132,15 @@
         "Thumb": { "styled": true, "cssClass": "bl-switch-thumb" }
       },
       "states": ["checked", "unchecked", "focus-visible", "disabled"],
-      "tokens": ["color.border-strong", "color.accent", "color.bg", "space.4", "radius.full"]
+      "tokens": [
+        "color.border-strong",
+        "color.accent",
+        "color.bg",
+        "space.4",
+        "radius.full",
+        "focus-ring.width",
+        "focus-ring.offset"
+      ]
     },
     "Tabs": {
       "kind": "compound",
@@ -154,7 +166,9 @@
         "shadow.card",
         "font.sans",
         "font-size.sm",
-        "font-weight.semibold"
+        "font-weight.semibold",
+        "focus-ring.width",
+        "focus-ring.offset"
       ]
     },
     "Accordion": {
@@ -179,7 +193,9 @@
         "space.4",
         "font.sans",
         "font-size.md",
-        "font-weight.semibold"
+        "font-weight.semibold",
+        "focus-ring.width",
+        "focus-ring.offset"
       ]
     },
     "Progress": {

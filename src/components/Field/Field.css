@@ -28,8 +28,8 @@
 /* mesmo anel de foco do Button — a consistência do foco visível entre
    componentes é parte do contrato do design system, não de cada componente */
 .bl-field-control:focus-visible {
-  outline: 2px solid var(--bl-color-accent);
-  outline-offset: 2px;
+  outline: var(--bl-focus-ring-width) solid var(--bl-color-accent);
+  outline-offset: var(--bl-focus-ring-offset);
 }
 /* estados de validação vêm prontos do Base UI como data-attributes (ADR 0003) */
 .bl-field-control[data-invalid] {

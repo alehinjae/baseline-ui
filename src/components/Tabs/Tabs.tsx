@@ -8,28 +8,24 @@ import type { ComponentProps } from 'react'
 // Tabs feito à mão que este componente substitui) é necessário.
 type WithClass<P> = Omit<P, 'className'> & { className?: string }
 
-export function Root({
-  className = '',
-  ...props
-}: WithClass<ComponentProps<typeof BaseTabs.Root>>) {
+export type TabsRootProps = WithClass<ComponentProps<typeof BaseTabs.Root>>
+export type TabsListProps = WithClass<ComponentProps<typeof BaseTabs.List>>
+export type TabsTabProps = WithClass<ComponentProps<typeof BaseTabs.Tab>>
+export type TabsPanelProps = WithClass<ComponentProps<typeof BaseTabs.Panel>>
+
+export function Root({ className = '', ...props }: TabsRootProps) {
   return <BaseTabs.Root className={`bl-tabs ${className}`.trim()} {...props} />
 }
 
-export function List({
-  className = '',
-  ...props
-}: WithClass<ComponentProps<typeof BaseTabs.List>>) {
+export function List({ className = '', ...props }: TabsListProps) {
   return <BaseTabs.List className={`bl-tabs-list ${className}`.trim()} {...props} />
 }
 
-export function Tab({ className = '', ...props }: WithClass<ComponentProps<typeof BaseTabs.Tab>>) {
+export function Tab({ className = '', ...props }: TabsTabProps) {
   return <BaseTabs.Tab className={`bl-tabs-tab ${className}`.trim()} {...props} />
 }
 
-export function Panel({
-  className = '',
-  ...props
-}: WithClass<ComponentProps<typeof BaseTabs.Panel>>) {
+export function Panel({ className = '', ...props }: TabsPanelProps) {
   return <BaseTabs.Panel className={`bl-tabs-panel ${className}`.trim()} {...props} />
 }
 

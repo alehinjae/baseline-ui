@@ -5,6 +5,35 @@ Como o pacote é instalado via `github:alehinjae/baseline-ui` (sem registro
 npm), a "versão" aqui é a de `package.json`/`baseline.manifest.json` — para
 fixar uma exata, use `npm install github:alehinjae/baseline-ui#<sha>`.
 
+## [0.8.0] — 2026-08-22
+
+### Adicionado
+
+- **Spec 0004 (token-and-type-contract-hygiene)**: tipos `*Props`
+  nomeados e exportados para os 5 componentes que ainda inlineavam o
+  tipo (`Accordion`, `Dialog`, `Field`, `Switch`, `Tabs`) — ex.:
+  `SwitchRootProps`, `DialogPopupProps`, importáveis diretamente.
+- Tokens novos `--bl-focus-ring-width` (2px) e `--bl-focus-ring-offset`
+  (2px), extraídos do anel de foco idêntico em 5 componentes; refletidos
+  em `baseline.manifest.json`.
+- `docs/decisions/0011-triagem-hardcode-e-duplicatas-de-token.md` — ADR
+  com a varredura real de valores hardcoded em `src/**/*.{css,tsx}`
+  (25 ocorrências reais, não os 93 inflados pelo audit contando
+  `docs/*.md`), triagem individual, e a decisão de não consolidar os 4
+  pares de tokens "duplicados" (falsos positivos: coincidência numérica
+  entre escalas independentes ou alias semântico intencional).
+
+### Corrigido
+
+- `Dialog.css`: margem de viewport `32px` solta → `var(--bl-space-6)`
+  (mesmo valor, agora rastreável à escala de espaçamento).
+
+### Verificado
+
+- Union types: auditados os 14 componentes, nenhuma prop de variante
+  usa `string` aberta — já 100% union type restrito, sem mudança de
+  código necessária.
+
 ## [0.7.0] — 2026-08-21
 
 ### Adicionado

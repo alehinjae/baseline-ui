@@ -84,6 +84,11 @@
     "lg": { "$value": "16px" },
     "full": { "$value": "9999px" }
   },
+  "focus-ring": {
+    "$type": "dimension",
+    "width": { "$value": "2px" },
+    "offset": { "$value": "2px" }
+  },
   "font": {
     "sans": {
       "$type": "fontFamily",

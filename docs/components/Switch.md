@@ -29,3 +29,5 @@
 | `color.bg`            | `tokens/semantic.light.json (e semantic.dark.json)` |
 | `space.4`             | `tokens/primitives.json`                            |
 | `radius.full`         | `tokens/primitives.json`                            |
+| `focus-ring.width`    | `tokens/primitives.json`                            |
+| `focus-ring.offset`   | `tokens/primitives.json`                            |

@@ -40,8 +40,8 @@
 }
 
 .bl-accordion-trigger:focus-visible {
-  outline: 2px solid var(--bl-color-accent);
-  outline-offset: -2px;
+  outline: var(--bl-focus-ring-width) solid var(--bl-color-accent);
+  outline-offset: calc(var(--bl-focus-ring-offset) * -1);
 }
 
 /* seta indicadora: gira com o estado que o motor põe no trigger */
