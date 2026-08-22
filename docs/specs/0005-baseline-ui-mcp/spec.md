@@ -1,6 +1,6 @@
 # 0005 — baseline-ui-mcp
 
-Status: draft
+Status: done
 Owner: alehinjae
 Related: ADR 0005 (manifest como ponte), spec 0003 (generated-documentation)
 
@@ -44,19 +44,28 @@ neste mesmo ambiente) — mas o baseline-ui não tem o seu.
 
 ## Critério de aceite
 
-- [ ] Servidor sobe local via `node` (ou `npx`) e responde às 4 tools
-      listadas acima.
-- [ ] `list_components` retorna os 14 componentes corretos, batendo com
-      `baseline.manifest.json`.
-- [ ] `get_component("Field")` retorna dado idêntico ao que está no
-      manifest pra esse componente — sem informação inventada,
-      sem divergência.
-- [ ] `get_guarantees("Switch")` retorna a área de toque real (44×44,
-      pós Spec 0002) — prova de que o MCP expõe estado real, não
-      aspiracional.
-- [ ] Testado registrando o servidor num `.mcp.json` de um projeto
-      consumidor (ex.: nbd-scheduler) e consultando via um agente de IA
-      de verdade, não só via chamada direta da tool.
+- [x] Servidor sobe local via `node` e responde às 4 tools listadas
+      acima — verificado por `mcp-server/smoke-test.mjs`, que usa o
+      `Client` real do `@modelcontextprotocol/sdk` conectando via stdio
+      no `index.mjs` real (não é chamada direta de função, é protocolo
+      MCP de ponta a ponta).
+- [x] `list_components` retorna os 14 componentes corretos, batendo com
+      `baseline.manifest.json` — `mcp-server/tools/list-components.test.mjs`
+      compara contra o manifest real do repo.
+- [x] `get_component("Field")` retorna dado idêntico ao que está no
+      manifest pra esse componente — `mcp-server/tools/get-component.test.mjs`
+      faz `assert.deepEqual` campo a campo.
+- [x] `get_guarantees("Switch")` retorna a área de toque real (44×44,
+      pós Spec 0002) — `mcp-server/tools/get-guarantees.test.mjs` e o
+      smoke-test confirmam o texto exato, citando ADR 0010.
+- [~] Registrado em `.mcp.json` deste repositório
+  (`mcp-server/index.mjs`, ver README do subpacote). A verificação
+  via protocolo MCP real (SDK `Client`/`Server` sobre stdio, não
+  mock) está feita e documentada acima; a confirmação via um agente
+  de IA consultando pela própria UI de tools fica pendente de uma
+  sessão nova (agentes carregam `.mcp.json` na inicialização, não
+  em quente) — não bloqueia o merge, ver "Riscos / rollback" do
+  `plan.md`.
 
 ## Por que essa ordem
 

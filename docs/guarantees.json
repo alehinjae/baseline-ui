@@ -1,0 +1,23 @@
+{
+  "$description": "Garantias de acessibilidade do baseline-ui, mantido à mão (mesmo espírito do baseline.manifest.json — ADR 0005): cada entrada cita o ADR ou script que a comprova. Não é gerado nem inferido — se um componente não aparece aqui além de _global, é porque nenhuma garantia específica além das globais foi verificada e documentada ainda. Consumido por mcp-server/tools/get-guarantees.mjs.",
+  "_global": {
+    "reducedMotion": {
+      "guarantee": "prefers-reduced-motion respeitado globalmente — todas as transições/animações são desativadas quando o usuário pede",
+      "source": "src/reduced-motion.css, testado em src/reduced-motion.test.ts (Spec 0002)"
+    },
+    "contrast": {
+      "guarantee": "todos os pares de token cor-de-texto/cor-de-fundo verificados contra WCAG AA (mínimo 4.5:1 texto normal, 3:1 texto grande/UI)",
+      "source": "scripts/check-contrast.mjs, rodado em todo `npm run build` (ADR 0006)"
+    },
+    "focusVisible": {
+      "guarantee": "todo componente interativo usa o anel de foco padrão (--bl-focus-ring-width/--bl-focus-ring-offset), visível só via teclado (:focus-visible)",
+      "source": "Spec 0004 — aplica-se aos componentes cujo `states` no manifest inclui \"focus-visible\""
+    }
+  },
+  "Switch": {
+    "hitArea": {
+      "guarantee": "44x44px de área de toque mínima (padrão AAA / Apple HIG), mesmo com o thumb visualmente menor",
+      "source": "ADR 0010 — via pseudo-elemento, sem mudar o tamanho visual do controle"
+    }
+  }
+}

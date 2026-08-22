@@ -5,6 +5,34 @@ Como o pacote é instalado via `github:alehinjae/baseline-ui` (sem registro
 npm), a "versão" aqui é a de `package.json`/`baseline.manifest.json` — para
 fixar uma exata, use `npm install github:alehinjae/baseline-ui#<sha>`.
 
+## [0.9.0] — 2026-08-22
+
+### Adicionado
+
+- **Spec 0005 (baseline-ui-mcp)**: servidor MCP próprio em
+  `mcp-server/` (subpacote separado — ADR 0012), expondo
+  `baseline.manifest.json`, `tokens/*.json` e `docs/guarantees.json`
+  como 4 tools: `list_components`, `get_component(name)`,
+  `get_tokens()`, `get_guarantees(component?)`.
+- `docs/guarantees.json` — garantias de acessibilidade verificadas
+  (foco, contraste, motion, área de toque do Switch), cada uma citando
+  o ADR/script que a comprova.
+- `scripts/token-source.mjs` — heurística de origem de token, extraída
+  de `generate-docs.mjs` pra ser reaproveitada pelo MCP.
+- `docs/decisions/0012-mcp-server-como-subpacote-separado.md` — por que
+  o MCP não entra nas dependências do pacote principal.
+- CI: novo job `mcp-server` (`.github/workflows/ci.yml`) rodando os
+  testes e o smoke-test do subpacote.
+
+### Resultado mensurável
+
+- `mcp-server/tools/*.test.mjs`: 9/9 passando, contra os dados reais do
+  repositório (não mocks). `mcp-server/smoke-test.mjs`: protocolo MCP
+  real via stdio (SDK `Client`↔`Server`), as 4 tools respondem
+  corretamente — `get_guarantees("Switch")` confirma a área de toque
+  real de 44×44 (ADR 0010), prova de que o servidor expõe estado
+  verificado, não aspiracional.
+
 ## [0.8.0] — 2026-08-22
 
 ### Adicionado

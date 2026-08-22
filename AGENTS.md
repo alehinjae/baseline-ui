@@ -35,6 +35,17 @@ tokens (`var(--bl-*)`) permitem — quebra o contrato do design system.
   compacto (36×20) — não assuma que o tamanho visual = área clicável ao
   fazer layout ao redor dele (ver ADR 0010).
 
+## Consultando via MCP
+
+Em vez de ler `baseline.manifest.json`/`tokens/*.json` direto do
+`node_modules`, um agente pode registrar
+[`mcp-server/`](./mcp-server/README.md) no seu próprio `.mcp.json` e
+consultar via tools: `list_components`, `get_component(name)`,
+`get_tokens()`, `get_guarantees(component?)` — a última expõe garantias
+de acessibilidade verificadas (não aspiracionais), citando o ADR/script
+que comprova cada uma. Ver
+[docs/specs/0005-baseline-ui-mcp/](./docs/specs/0005-baseline-ui-mcp/).
+
 ## Se você está EDITANDO este repositório
 
 Componente novo = 4 entregas, todas cobradas automaticamente pelo build

@@ -1,0 +1,16 @@
+{
+  "name": "baseline-ui-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Servidor MCP do baseline-ui — expõe baseline.manifest.json, tokens/*.json e docs/guarantees.json como tools consultáveis por um agente de IA. Ver docs/specs/0005-baseline-ui-mcp/ e ADR 0012.",
+  "type": "module",
+  "main": "./index.mjs",
+  "scripts": {
+    "test": "node --test tools/*.test.mjs",
+    "smoke": "node smoke-test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.0"
+  }
+}

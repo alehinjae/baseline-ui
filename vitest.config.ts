@@ -4,6 +4,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   plugins: [react()],
   test: {
+    // mcp-server/ tem seu próprio subpacote com testes via `node --test`
+    // (ADR 0012) — não faz parte desta suíte.
+    exclude: ['**/node_modules/**', 'mcp-server/**'],
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     css: true,

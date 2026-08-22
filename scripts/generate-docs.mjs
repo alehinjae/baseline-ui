@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from 
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import prettier from 'prettier'
+import { tokenFile } from './token-source.mjs'
 
 // A saída é formatada com o Prettier antes de gravar — sem isso, rodar
 // `npm run build` de novo (que roda este script) produziria markdown cru
@@ -33,18 +34,6 @@ const header = (name) => `<!-- ARQUIVO GERADO — não edite à mão.
 
 # ${name}
 `
-
-function tokenFile(path) {
-  // primitivos: color.zinc.900, space.4... — semânticos: color.bg, color.accent...
-  // heurística: se o segmento depois de "color." é um nome de matiz (zinc/red/blue/
-  // green/orange/purple/pink) ou o token é espaço/raio/fonte/sombra puro (space.N,
-  // radius.*, font*, shadow.*), é primitivo; senão é semântico (existe nos dois modos).
-  const hueNames = ['zinc', 'red', 'blue', 'green', 'orange', 'purple', 'pink', 'white', 'black']
-  const seg = path.split('.')
-  if (seg[0] === 'color' && hueNames.includes(seg[1])) return 'tokens/primitives.json'
-  if (seg[0] !== 'color') return 'tokens/primitives.json'
-  return 'tokens/semantic.light.json (e semantic.dark.json)'
-}
 
 function renderProps(props) {
   if (!props) return ''
