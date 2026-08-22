@@ -5,6 +5,28 @@ Como o pacote é instalado via `github:alehinjae/baseline-ui` (sem registro
 npm), a "versão" aqui é a de `package.json`/`baseline.manifest.json` — para
 fixar uma exata, use `npm install github:alehinjae/baseline-ui#<sha>`.
 
+## [0.7.0] — 2026-08-21
+
+### Adicionado
+
+- **Spec 0003 (generated-documentation)**: `scripts/generate-docs.mjs`
+  gera `docs/components/*.md` (14 páginas + índice) a partir de
+  `baseline.manifest.json` — zero arquivo mantido à mão, formatado
+  via Prettier programaticamente. `npm run docs`, encadeado em
+  `npm run build`.
+- `AGENTS.md` — convenções pra agente de IA, incluindo 3 armadilhas
+  reais descobertas na sessão (Field/valueMissing, Grid/especificidade
+  CSS, Switch/hit-area).
+- `llms.txt` — pontos de entrada curados.
+- `CONTRIBUTING.md` — processo de contribuição, quando abrir spec vs
+  ADR.
+- `docs/README.md` — índice geral da documentação.
+
+### Resultado mensurável
+
+- `ds-audit` (Southleft): **70/100 (C) → 81/100 (B)**. Documentation
+  75→85, AI Readiness 43→61, Accessibility 53→88, Tooling 62→79.
+
 ## [0.6.0] — 2026-08-12
 
 ### Adicionado
