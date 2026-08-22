@@ -1,0 +1,29 @@
+# baseline-ui
+
+> Design system React construído sobre @base-ui/react, com tokens W3C
+> Design Tokens como fonte única e um manifest machine-readable como
+> contrato. Acessibilidade e contraste são verificados no build, não só
+> documentados — ver /docs/positioning.md.
+
+## Pontos de entrada curados
+
+- [AGENTS.md](./AGENTS.md): convenções pra agente de IA consumindo ou
+  editando o pacote — comece aqui se for editar código.
+- [docs/positioning.md](./docs/positioning.md): o que o projeto promete
+  e onde cada garantia é verificada de verdade.
+- [docs/components/README.md](./docs/components/README.md): catálogo
+  dos 14 componentes, gerado do manifest — sempre atual, nunca
+  desatualizado manualmente.
+- [baseline.manifest.json](./baseline.manifest.json): o mesmo catálogo,
+  em formato estruturado (props, variantes, estados, tokens por
+  componente) — pra consumo por ferramenta, não leitura humana.
+- [tokens/primitives.json](./tokens/primitives.json),
+  [tokens/semantic.light.json](./tokens/semantic.light.json),
+  [tokens/semantic.dark.json](./tokens/semantic.dark.json): os tokens de
+  design em formato W3C Design Tokens, fonte única (nunca editar
+  `src/tokens.css`, que é gerado).
+- [docs/decisions/](./docs/decisions/): todo ADR — por que cada decisão
+  de arquitetura foi tomada, alternativas rejeitadas incluídas.
+- [docs/specs/](./docs/specs/README.md): iniciativas em andamento, com
+  critério de aceite.
+- [CHANGELOG.md](./CHANGELOG.md): histórico de versões.
