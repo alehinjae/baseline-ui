@@ -11,7 +11,20 @@ import globals from 'globals'
 // usados fora de ordem/condicional, variável não declarada) ficam error,
 // porque não deveriam disparar em código correto de qualquer forma.
 export default tseslint.config(
-  { ignores: ['dist/**', 'coverage/**', 'audit/**', 'node_modules/**', 'src/tokens.css'] },
+  {
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'audit/**',
+      'node_modules/**',
+      'src/tokens.css',
+      // gerado pelo Claude Design (claude.ai/design) sincronizando com o
+      // design system — não é código nosso, já ignorado no .gitignore
+      'ds-bundle/**',
+      '.ds-sync/**',
+      '.design-sync/**',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

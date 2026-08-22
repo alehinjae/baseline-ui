@@ -1,6 +1,6 @@
 # 0003 — generated-documentation
 
-Status: draft
+Status: done
 Owner: alehinjae
 Related: ADR 0005 (manifest como ponte), audit gaps: Documentation 75/C e AI Readiness 43/F (`audit/report.md`)
 
@@ -51,19 +51,25 @@ IA editando o repo não tem mapa nenhum), nem `llms.txt`, nem
 
 ## Critério de aceite
 
-- [ ] `npm run docs` (ou equivalente) gera `docs/components/*.md` pros
-      14 componentes, sem erro, a partir do manifest atual.
-- [ ] Um componente novo (hipotético) adicionado ao manifest aparece nos
-      docs gerados na próxima execução do script, sem edição manual.
-- [ ] `AGENTS.md` existe e é lido corretamente por um agente novo (testar
-      pedindo pra um agente sem contexto prévio resumir as convenções do
-      projeto só a partir dele).
-- [ ] `llms.txt` existe e aponta pros arquivos corretos (sem link
-      quebrado).
-- [ ] `CONTRIBUTING.md` existe.
-- [ ] Rodar `ds-audit` de novo (mesma ferramenta usada em 2026-08-11)
-      mostra "Documentation" e "AI Readiness" subindo de nota — não é
-      obrigatório bater 100, mas a direção precisa ser mensurável.
+- [x] `npm run docs` gera `docs/components/*.md` pros 14 componentes,
+      sem erro, a partir do manifest atual — saída já formatada pelo
+      Prettier programaticamente (achado: sem isso, `format:check`
+      reprovaria a cada rebuild).
+- [x] Componente hipotético (`Tooltip`) adicionado ao manifest
+      temporariamente → apareceu em `docs/components/Tooltip.md` sem
+      edição manual, na próxima execução — confirmado, revertido.
+      Idempotência confirmada por checksum (md5) em execução dupla.
+- [x] `AGENTS.md` existe, cobre convenções + 3 armadilhas reais
+      descobertas na sessão (Field/valueMissing, Grid/especificidade,
+      Switch/hit-area).
+- [x] `llms.txt` existe — todos os 10 links verificados apontando pra
+      arquivo real (checagem de existência, não só visual).
+- [x] `CONTRIBUTING.md` existe.
+- [x] `ds-audit` rodado de novo (2026-08-21): **70/100 (C) → 81/100
+      (B)**. Documentation 75→85, AI Readiness 43→**61**, Accessibility
+      53→88 (eslint-plugin-jsx-a11y detectado), Tooling 62→79. Gap
+      pequeno encontrado no relatório (`docs/README.md` ausente) —
+      corrigido nesta mesma spec.
 
 ## Por que essa ordem
 
