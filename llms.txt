@@ -26,4 +26,7 @@
   de arquitetura foi tomada, alternativas rejeitadas incluídas.
 - [docs/specs/](./docs/specs/README.md): iniciativas em andamento, com
   critério de aceite.
+- [mcp-server/](./mcp-server/README.md): servidor MCP próprio — expõe
+  manifest, tokens e garantias de acessibilidade como tools
+  consultáveis, alternativa a ler os arquivos direto.
 - [CHANGELOG.md](./CHANGELOG.md): histórico de versões.

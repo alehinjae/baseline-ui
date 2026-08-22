@@ -29,7 +29,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   {
     // scripts/*.mjs e configs de build/teste rodam em Node, não no navegador
-    files: ['scripts/**/*.mjs', '*.config.{js,ts,mjs}', 'eslint.config.js'],
+    files: ['scripts/**/*.mjs', 'mcp-server/**/*.mjs', '*.config.{js,ts,mjs}', 'eslint.config.js'],
     languageOptions: { globals: globals.node },
   },
   {
