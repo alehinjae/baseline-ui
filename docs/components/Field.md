@@ -41,3 +41,5 @@
 | `font-size.sm`        | `tokens/primitives.json`                            |
 | `font-size.md`        | `tokens/primitives.json`                            |
 | `font-weight.medium`  | `tokens/primitives.json`                            |
+| `focus-ring.width`    | `tokens/primitives.json`                            |
+| `focus-ring.offset`   | `tokens/primitives.json`                            |

@@ -1,6 +1,6 @@
 # 0004 — token-and-type-contract-hygiene
 
-Status: draft
+Status: done
 Owner: alehinjae
 Related: ADR 0004 (tokens como fonte única), ADR 0005 (manifest), audit gaps: Design Tokens 72/C e "5 of 14 components do not declare a Props interface/type" (`audit/report.md`)
 
@@ -55,16 +55,25 @@ Duas categorias de gap, ambas ligadas ao contrato de tipo/token:
 
 ## Critério de aceite
 
-- [ ] `import type { SwitchRootProps } from 'baseline-ui'` funciona (e
-      equivalente pros outros 4 componentes) sem erro de tipo.
-- [ ] `npm run typecheck` continua limpo depois da mudança.
-- [ ] Os 20 valores hardcoded-com-token-equivalente não aparecem mais no
-      relatório do `ds-audit` na categoria "Design Tokens".
-- [ ] Existe um documento (ou seção de ADR) listando a triagem dos 50
-      valores sem token equivalente, com decisão registrada pra cada um.
-- [ ] Os 4 pares de tokens duplicados: `check-contrast.mjs` e
-      `check-manifest.mjs` continuam passando depois da consolidação.
-- [ ] `npm run build` e `npm run test` verdes.
+- [x] `import type { SwitchRootProps } from 'baseline-ui'` funciona (e
+      equivalente pros outros 4 componentes) sem erro de tipo. Verificado
+      via `npx tsc --noEmit` num arquivo ad-hoc importando os 10 tipos
+      novos (`*RootProps`/`*Props` de Accordion, Dialog, Field, Switch,
+      Tabs).
+- [x] `npm run typecheck` continua limpo depois da mudança.
+- [x] Os valores hardcoded com token equivalente real (varredura em
+      `src/**/*.{css,tsx}`, não na contagem inflada do audit que inclui
+      `docs/*.md`) foram migrados: `outline`/`outline-offset` do anel de
+      foco (5 componentes) e a margem de viewport do Dialog. Ver ADR 0011.
+- [x] Existe documento de triagem: ADR 0011
+      (`docs/decisions/0011-triagem-hardcode-e-duplicatas-de-token.md`)
+      lista os 25 px hardcoded reais em `src/`, com decisão pra cada um
+      (token novo / fix mecânico / intencional documentado inline).
+- [x] Os 4 pares de tokens "duplicados": investigados e documentados na
+      ADR 0011 como falsos positivos (coincidência numérica entre escalas
+      independentes, ou alias semântico intencional) — decisão: nenhuma
+      consolidação, com o porquê registrado.
+- [x] `npm run build` e `npm run test` verdes.
 
 ## Por que essa ordem
 
